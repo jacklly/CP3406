@@ -1,5 +1,7 @@
 package com.example.playground
 
+import android.util.Log.println
+
 fun main() {
     val recipe = Recipe() // Create an instance of Recipe class
     recipe.addIngredient("Rice") // Call the method with argument “Rice”
@@ -7,7 +9,7 @@ fun main() {
     println(recipe.getIngredients()) // Print this method to console
 }
 
-class Recipe {
+class Recipe() {
     private val ingredients = mutableListOf<String>()
     fun addIngredient(name: String) {
         ingredients.add(name)
