@@ -59,21 +59,6 @@ fun UtilityApp() {
     var selectedTab by remember { mutableStateOf("Utility") }
 
     Scaffold(
-        floatingActionButton = {
-            ExtendedFloatingActionButton(
-                onClick = {},
-                modifier = Modifier.padding()
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Add,
-                    contentDescription = "New Item"
-                )
-                Text(
-                    text = "New Activity"
-                )
-            }
-        },
-
         bottomBar = {
             NavigationBar {
                 NavigationBarItem(
@@ -103,21 +88,21 @@ fun UtilityApp() {
 @Composable
 fun UtilityScreen() {
     var counter by remember { mutableIntStateOf(0) }
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(24.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            Text("Utility Screen", style = MaterialTheme.typography.headlineMedium)
+            Text("Counter: $counter", style = MaterialTheme.typography.bodyLarge)
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(24.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        Text("Utility Screen", style = MaterialTheme.typography.headlineMedium)
-        Text("Counter: $counter", style = MaterialTheme.typography.bodyLarge)
-
-        Button(onClick = { counter++ }) {
-            Text("Increment")
+            Button(onClick = { counter++ }) {
+                Text("Increment")
+            }
         }
     }
-}
+
 
 @Composable
 fun SettingsScreen() {
