@@ -1,5 +1,6 @@
 package au.edu.jcu.cp3406_cp5307_utilityappstartertemplate
 
+import android.R
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -10,9 +11,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -55,6 +59,21 @@ fun UtilityApp() {
     var selectedTab by remember { mutableStateOf("Utility") }
 
     Scaffold(
+        floatingActionButton = {
+            ExtendedFloatingActionButton(
+                onClick = {},
+                modifier = Modifier.padding()
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = "New Item"
+                )
+                Text(
+                    text = "New Activity"
+                )
+            }
+        },
+
         bottomBar = {
             NavigationBar {
                 NavigationBarItem(
