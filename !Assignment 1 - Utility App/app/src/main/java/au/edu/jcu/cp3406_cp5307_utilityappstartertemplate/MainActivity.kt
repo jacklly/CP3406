@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Home
@@ -21,8 +22,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -33,6 +36,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.theme.CP3406_CP5603UtilityAppStarterTemplateTheme
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.text.input.TextFieldValue
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,20 +105,21 @@ fun UtilityApp() {
 @Composable
 fun UtilityScreen() {
     var counter by remember { mutableIntStateOf(0) }
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(24.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            Text("Utility Screen", style = MaterialTheme.typography.headlineMedium)
-            Text("Counter: $counter", style = MaterialTheme.typography.bodyLarge)
 
-            Button(onClick = { counter++ }) {
-                Text("Increment")
-            }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        Text("Utility Screen", style = MaterialTheme.typography.headlineMedium)
+        Text("Counter: $counter", style = MaterialTheme.typography.bodyLarge)
+
+        Button(onClick = { counter++ }) {
+            Text("Increment")
         }
     }
+}
 
 
 @Composable
@@ -129,12 +136,26 @@ fun SettingsScreen() {
 
 @Composable
 fun AddingScreen() {
+
+    val userTaskName = rememberSaveable { mutableStateOf("")}
+    val noOfTimes = rememberSaveable { mutableStateOf("")}
+
     Column(
-        Modifier
+        modifier = Modifier
             .fillMaxSize()
-            .padding(24.dp), Arrangement.spacedBy(16.dp)
+            .padding(24.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Text("Adding Items", style = MaterialTheme.typography.headlineMedium)
-        Text("This is where you can add items to your list")
+        TextField(
+            label = { Text("Task: ") },
+            value = userTaskName.value,
+            onValueChange = { userTaskName.value = it }
+        )
+        TextField(
+            label = { Text("Times per day: ") },
+            value = noOfTimes.value,
+            onValueChange = { noOfTimes.value = it }
+        )
+
     }
 }
