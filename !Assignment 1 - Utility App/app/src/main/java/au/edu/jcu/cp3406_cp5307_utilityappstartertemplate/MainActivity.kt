@@ -59,6 +59,14 @@ fun UtilityApp() {
     var selectedTab by remember { mutableStateOf("Utility") }
 
     Scaffold(
+        floatingActionButton = {
+            ExtendedFloatingActionButton (
+                onClick = { selectedTab = "Adding"},
+                icon = { Icon(Icons.Default.Add, null) },
+                text = { Text("Add an Item") }
+            )
+        },
+
         bottomBar = {
             NavigationBar {
                 NavigationBarItem(
@@ -80,6 +88,7 @@ fun UtilityApp() {
             when (selectedTab) {
                 "Utility" -> UtilityScreen()
                 "Settings" -> SettingsScreen()
+                "Adding" -> AddingScreen()
             }
         }
     }
@@ -113,5 +122,17 @@ fun SettingsScreen() {
     ) {
         Text("Settings Screen", style = MaterialTheme.typography.headlineMedium)
         Text("This is where you can add toggles or preferences.")
+    }
+}
+
+@Composable
+fun AddingScreen() {
+    Column(
+        Modifier
+            .fillMaxSize()
+            .padding(24.dp), Arrangement.spacedBy(16.dp)
+    ) {
+        Text("Adding Items", style = MaterialTheme.typography.headlineMedium)
+        Text("This is where you can add items to your list")
     }
 }
