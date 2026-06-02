@@ -60,11 +60,13 @@ fun UtilityApp() {
 
     Scaffold(
         floatingActionButton = {
-            ExtendedFloatingActionButton (
-                onClick = { selectedTab = "Adding"},
-                icon = { Icon(Icons.Default.Add, null) },
-                text = { Text("Add an Item") }
-            )
+            if (selectedTab == "Utility") {
+                ExtendedFloatingActionButton(
+                    onClick = { selectedTab = "Adding" },
+                    icon = { Icon(Icons.Default.Add, null) },
+                    text = { Text("Add an Item") }
+                )
+            }
         },
 
         bottomBar = {
