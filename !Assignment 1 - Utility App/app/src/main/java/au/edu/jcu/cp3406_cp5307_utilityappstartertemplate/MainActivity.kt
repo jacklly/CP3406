@@ -9,13 +9,17 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -38,7 +42,10 @@ import androidx.compose.ui.unit.dp
 import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.theme.CP3406_CP5603UtilityAppStarterTemplateTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.TextFieldValue
+import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.data.Datasource
+import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.model.Task
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -104,21 +111,9 @@ fun UtilityApp() {
 
 @Composable
 fun UtilityScreen() {
-    var counter by remember { mutableIntStateOf(0) }
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(24.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        Text("Utility Screen", style = MaterialTheme.typography.headlineMedium)
-        Text("Counter: $counter", style = MaterialTheme.typography.bodyLarge)
-
-        Button(onClick = { counter++ }) {
-            Text("Increment")
-        }
-    }
+    TaskList(
+        taskList = Datasource().loadTasks(),
+    )
 }
 
 
@@ -157,5 +152,32 @@ fun AddingScreen() {
             onValueChange = { noOfTimes.value = it }
         )
 
+    }
+}
+
+@Composable
+fun TaskAppear(task: Task, modifier: Modifier = Modifier) {
+    Card(modifier = modifier) {
+        Column() {
+            Text(
+                text = LocalContext.current.getString(task.stringResourceId),
+                modifier = Modifier.padding(10.dp),
+                style = MaterialTheme.typography.headlineSmall
+            )
+        }
+    }
+}
+
+@Composable
+fun TaskList(taskList: List<Task>, modifier: Modifier = Modifier) {
+    LazyColumn(modifier = modifier) {
+        items(taskList) {task ->
+            TaskAppear(
+                task = task,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp)
+            )
+        }
     }
 }

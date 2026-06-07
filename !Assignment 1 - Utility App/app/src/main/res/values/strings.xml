@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">CP3406_CP5307 Utility App Starter Template</string>
+    <string name="Task1">Take out litter</string>
+    <string name="Task2">Feeding 1</string>
+    <string name="Task3">I am strong.</string>
+    <string name="Task4">I am strong.</string>
+    <string name="Task5">I am strong.</string>
+    <string name="Task6">I am strong.</string>
+    <string name="Task7">I am strong.</string>
+    <string name="Task8">I am strong.</string>
+    <string name="Task9">I am strong.</string>
+    <string name="Task10">I am strong.</string>
 </resources>
