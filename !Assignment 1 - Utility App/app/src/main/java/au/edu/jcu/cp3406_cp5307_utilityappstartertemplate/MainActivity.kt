@@ -67,12 +67,14 @@ fun UtilityAppPreview() {
     }
 }
 
+/*App default layout*/
 @Composable
 fun UtilityApp() {
     var selectedTab by remember { mutableStateOf("Utility") }
 
     Scaffold(
         floatingActionButton = {
+            /*Only show the FAB if on the home screen*/
             if (selectedTab == "Utility") {
                 ExtendedFloatingActionButton(
                     onClick = { selectedTab = "Adding" },
@@ -109,6 +111,7 @@ fun UtilityApp() {
     }
 }
 
+/*home screen that displays the list of tasks*/
 @Composable
 fun UtilityScreen() {
     TaskList(
@@ -116,7 +119,7 @@ fun UtilityScreen() {
     )
 }
 
-
+/*Screen for settings*/
 @Composable
 fun SettingsScreen() {
     Column(
@@ -129,6 +132,7 @@ fun SettingsScreen() {
     }
 }
 
+/*Screen for adding new tasks*/
 @Composable
 fun AddingScreen() {
 
@@ -155,6 +159,7 @@ fun AddingScreen() {
     }
 }
 
+/*Make tasks appear, pulled from local file*/
 @Composable
 fun TaskAppear(task: Task, modifier: Modifier = Modifier) {
     Card(modifier = modifier) {
@@ -168,6 +173,7 @@ fun TaskAppear(task: Task, modifier: Modifier = Modifier) {
     }
 }
 
+/*Draw the tasks in a column*/
 @Composable
 fun TaskList(taskList: List<Task>, modifier: Modifier = Modifier) {
     LazyColumn(modifier = modifier) {
