@@ -48,6 +48,7 @@ import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.data.Datasource
 import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.model.Task
 
 
+
 /*home screen that displays the list of tasks*/
 @Composable
 fun HomeScreen() {
@@ -128,7 +129,7 @@ fun AddingSection() {
 
     ) {
         Text(
-            text = "Add an Item"
+            text = "Add an Item:"
         )
 
         TextField(
