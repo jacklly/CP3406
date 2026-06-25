@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Brisbane">Brisbane</string>
+    <string name="Gold_Coast">Gold Coast</string>
+    <string name="Mooloolaba">Mooloolaba (Sunshine Coast)</string>
+    <string name="Cairns">Cairns</string>
+    <string name="Townsville">Townsville</string>
+    <string name="Toowoomba">Toowoomba</string>
+    <string name="Mackay">Mackay</string>
+    <string name="Rockhampton">Rockhampton</string>
+    <string name="Bundaberg">Bundaberg</string>
+    <string name="Mount_Isa">Mount Isa</string>
+</resources>

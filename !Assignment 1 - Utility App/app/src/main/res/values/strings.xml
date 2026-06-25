@@ -1,8 +1,3 @@
 <resources>
     <string name="app_name">CP3406_CP5307 Utility App Starter Template</string>
-    <string name="Task1">Take out trash</string>
-    <string name="Task2">Feeding the cat</string>
-    <string name="Task3">Start project for uni</string>
-    <string name="Task4">Call ergon</string>
-    <string name="Task5">Grab the grocery order from Coles</string>
 </resources>
