@@ -20,7 +20,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.theme.CP3406_CP5603UtilityAppStarterTemplateTheme
 import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.components.HomeScreen
 import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.components.SettingsScreen
@@ -37,18 +36,12 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun UtilityAppPreview() {
-    CP3406_CP5603UtilityAppStarterTemplateTheme {
-        UtilityApp()
-    }
-}
-
 /*App default layout*/
 @Composable
 fun UtilityApp() {
+    //nesting for chosen city and screen state
     var selectedTab by remember { mutableStateOf("Home") }
+    var chosenCity by remember { mutableStateOf("Brisbane") }
 
     Scaffold(
         bottomBar = {
@@ -70,8 +63,10 @@ fun UtilityApp() {
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
             when (selectedTab) {
-                "Home" -> HomeScreen()
-                "Settings" -> SettingsScreen()
+
+                //parse the chosen city between the screens
+                "Home" -> HomeScreen(chosenCity)
+                "Settings" -> SettingsScreen(cityChange = {chosenCity = it}, chosenCity = chosenCity)
             }
         }
     }

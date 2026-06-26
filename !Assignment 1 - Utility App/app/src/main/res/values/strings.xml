@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">CP3406_CP5307 Utility App Starter Template</string>
+    <string name="city1">Brisbane</string>
+    <string name="city2">Gold Coast</string>
+    <string name="city3">Mooloolaba (Sunshine Coast)</string>
+    <string name="city4">Cairns</string>
+    <string name="city5">Townsville</string>
+    <string name="city6">Toowoomba</string>
+    <string name="city7">Mackay</string>
+    <string name="city8">Rockhampton</string>
+    <string name="city9">Bundaberg</string>
+    <string name="city10">Mount Isa</string>
 </resources>

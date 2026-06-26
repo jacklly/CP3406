@@ -1,11 +1,8 @@
 package au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.components
 
-import android.content.ClipData
-import android.support.v4.app.RemoteActionCompatParcelizer.read
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -16,16 +13,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.apiCaller.RetrofitCall
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import org.json.JSONObject
-import kotlin.jvm.java
 
 /*home screen that displays the weather values*/
 @Composable
-fun HomeScreen() {
+fun HomeScreen(chosenCity: String) {
     Column {
-        ShowWeather()
+        ShowWeather(chosenCity = chosenCity)
     }
 }
 
@@ -89,11 +83,11 @@ fun HomeScreen() {
 
 /*call the weather api*/
 @Composable
-fun ShowWeather() {
+fun ShowWeather(chosenCity: String) {
     var result by remember { mutableStateOf<String>("Loading...") }
 
-    LaunchedEffect(Unit) {
-        val url = "v1/current.json?key=21c566a7c05445ce98833155262306&q=$cityValue&aqi=no"
+    LaunchedEffect(chosenCity) {
+        val url = "v1/current.json?key=21c566a7c05445ce98833155262306&q=$chosenCity&aqi=no"
 
         val apiData = RetrofitCall.api.getWeather(url)
 
@@ -107,12 +101,19 @@ fun ShowWeather() {
         val city: String = location.getString("name")
         val temp: Double = current.getDouble("temp_c")
 
-
+        result = "$city \n$temp \n$city \n$city \n$city \n$city \n$city \n"
     }
 
-    Column(modifier = Modifier.padding(16.dp)) {
-        Text("Weather API")
-        Spacer(Modifier.height(16.dp))
-        Text(result)
-    }
+    Text(
+        modifier = Modifier
+            .fillMaxWidth()
+            .size(30.dp),
+        text = "Queensland Weather API Service",
+    )
+    Text(
+        modifier = Modifier
+            .fillMaxWidth()
+            .size(10.dp),
+        text = result,
+    )
 }
