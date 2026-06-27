@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CP3406_CP5603UtilityAppStarterTemplate">
         <activity
-            android:name="au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.MainActivity"
+            android:name="au.edu.jcu.UtilityApp1.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.CP3406_CP5603UtilityAppStarterTemplate">

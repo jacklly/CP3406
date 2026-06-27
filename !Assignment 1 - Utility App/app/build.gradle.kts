@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "au.edu.jcu.cp3406_cp5307_utilityappstartertemplate"
+    namespace = "au.edu.jcu.UtilityApp1"
     compileSdk = 36
 
     defaultConfig {
