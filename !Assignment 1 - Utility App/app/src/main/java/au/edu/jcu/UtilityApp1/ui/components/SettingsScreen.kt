@@ -1,4 +1,4 @@
-package au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.components
+package au.edu.jcu.UtilityApp1.ui.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,8 +23,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.model.City
-import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.model.CitySource
+import au.edu.jcu.UtilityApp1.ui.model.City
+import au.edu.jcu.UtilityApp1.ui.model.CitySource
 
 /*Screen to display / change settings*/
 @Composable

@@ -1,4 +1,4 @@
-package au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.apiCaller
+package au.edu.jcu.UtilityApp1.apiCaller
 
 import retrofit2.Retrofit.Builder
 import retrofit2.converter.gson.GsonConverterFactory

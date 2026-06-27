@@ -1,4 +1,4 @@
-package au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.apiCaller
+package au.edu.jcu.UtilityApp1.apiCaller
 
 import okhttp3.ResponseBody
 import retrofit2.http.GET

@@ -1,6 +1,6 @@
-package au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.model
+package au.edu.jcu.UtilityApp1.ui.model
 
-import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.R
+import au.edu.jcu.UtilityApp1.R
 
 class CitySource {
     fun loadCities(): List<City> {

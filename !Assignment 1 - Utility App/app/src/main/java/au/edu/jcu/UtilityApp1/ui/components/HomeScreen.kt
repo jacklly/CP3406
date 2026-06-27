@@ -1,4 +1,4 @@
-package au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.components
+package au.edu.jcu.UtilityApp1.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -29,8 +29,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.R
-import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.apiCaller.RetrofitCall
+import au.edu.jcu.UtilityApp1.R
+import au.edu.jcu.UtilityApp1.apiCaller.RetrofitCall
 import org.json.JSONObject
 
 /*home screen that displays the weather values*/
