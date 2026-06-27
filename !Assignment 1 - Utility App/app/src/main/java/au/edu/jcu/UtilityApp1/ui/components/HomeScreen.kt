@@ -29,8 +29,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import au.edu.jcu.UtilityApp1.R
 import au.edu.jcu.UtilityApp1.apiCaller.RetrofitCall
+import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.R
 import org.json.JSONObject
 
 /*home screen that displays the weather values*/
@@ -185,7 +185,6 @@ fun ShowWeather(chosenCity: String) {
                 textAlign = TextAlign.Center,
                 color = textColour
             )
-
 
             //Home image with main temp info
             Card (
