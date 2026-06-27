@@ -29,8 +29,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import au.edu.jcu.UtilityApp1.R
 import au.edu.jcu.UtilityApp1.apiCaller.RetrofitCall
-import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.R
 import org.json.JSONObject
 
 /*home screen that displays the weather values*/
@@ -40,64 +40,6 @@ fun HomeScreen(chosenCity: String) {
         ShowWeather(chosenCity = chosenCity)
     }
 }
-
-/*reponse from the api:
-* {
-    "location": {
-        "name": "Townsville",
-        "region": "Queensland",
-        "country": "Australia",
-        "lat": -19.25,
-        "lon": 146.8,
-        "tz_id": "Australia/Brisbane",
-        "localtime_epoch": 1782373986,
-        "localtime": "2026-06-25 17:53"
-    },
-    "current": {
-        "last_updated_epoch": 1782373500,
-        "last_updated": "2026-06-25 17:45",
-        "temp_c": 23.2,
-        "temp_f": 73.8,
-        "is_day": 0,
-        "condition": {
-            "text": "Overcast",
-            "icon": "//cdn.weatherapi.com/weather/64x64/night/122.png",
-            "code": 1009
-        },
-        "wind_mph": 14.8,
-        "wind_kph": 23.8,
-        "wind_degree": 108,
-        "wind_dir": "ESE",
-        "pressure_mb": 1020.0,
-        "pressure_in": 30.12,
-        "precip_mm": 0.36,
-        "precip_in": 0.01,
-        "humidity": 65,
-        "cloud": 75,
-        "feelslike_c": 25.2,
-        "feelslike_f": 77.3,
-        "windchill_c": 21.7,
-        "windchill_f": 71.0,
-        "heatindex_c": 24.4,
-        "heatindex_f": 76.0,
-        "dewpoint_c": 17.2,
-        "dewpoint_f": 63.0,
-        "vis_km": 10.0,
-        "vis_miles": 6.0,
-        "uv": 0.2,
-        "gust_mph": 19.9,
-        "gust_kph": 32.1,
-        "will_it_rain": 0,
-        "chance_of_rain": 36,
-        "will_it_snow": 0,
-        "chance_of_snow": 0,
-        "short_rad": 0,
-        "diff_rad": 0,
-        "dni": 0,
-        "gti": 0
-    }
-}
-* */
 
 /*call the weather api*/
 @Composable
