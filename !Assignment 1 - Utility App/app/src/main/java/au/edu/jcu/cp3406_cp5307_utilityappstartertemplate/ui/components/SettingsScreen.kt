@@ -100,7 +100,7 @@ fun CitiesList(citiesList: List<City>, selectedItem: String, citySelect: (String
                                 .fillMaxHeight(),
                             imageVector = Icons.Default.CheckCircle,
                             contentDescription = "selection",
-                            tint = Color(GREEN)
+                            tint = Color(0xFF006400)
                         )
                     }
                 }
