@@ -127,7 +127,8 @@ fun ShowWeather(chosenCity: String) {
         temperature = temp
         cityName = city
     }
-    Column(){
+
+    Column {
         Text(
             modifier = Modifier.fillMaxWidth(),
             text = "Queensland Weather API Service",
@@ -144,14 +145,12 @@ fun ShowWeather(chosenCity: String) {
 
         //Check for day/night and set background image
         var weatherImage: Painter
-        var tempColor: Color
+
         if (currentTime == 1) {
             weatherImage = painterResource(id = R.drawable.day)
-            tempColor = Color.White
         }
         else {
             weatherImage = painterResource(id = R.drawable.night)
-            tempColor = Color.Black
         }
 
         Box(
@@ -165,7 +164,6 @@ fun ShowWeather(chosenCity: String) {
                 text = temperature.toString() + "℃",
                 fontSize = 60.sp,
                 textAlign = TextAlign.Center,
-                color = tempColor
             )
         }
     }

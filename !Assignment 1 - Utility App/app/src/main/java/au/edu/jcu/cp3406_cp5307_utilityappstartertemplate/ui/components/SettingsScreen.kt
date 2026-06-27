@@ -1,8 +1,13 @@
 package au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.components
 
 import android.R
+import android.graphics.Color.BLUE
 import android.graphics.Color.GREEN
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.snapping.SnapPosition
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -21,10 +26,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.model.CitySource
@@ -33,10 +40,24 @@ import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.model.City
 /*Screen to display / change settings*/
 @Composable
 fun SettingsScreen(chosenCity: String, cityChange: (String) -> Unit) {
-    CitiesList(
-        citiesList = CitySource().loadCities(),
-        selectedItem = chosenCity,
-        citySelect = cityChange)
+    Column {
+        Box (
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Queensland Major Cities:",
+                fontSize = 35.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(8.dp).fillMaxWidth()
+            )
+        }
+
+        CitiesList(
+            citiesList = CitySource().loadCities(),
+            selectedItem = chosenCity,
+            citySelect = cityChange
+        )
+    }
 }
 
 @Composable
