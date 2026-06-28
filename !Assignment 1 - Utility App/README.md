@@ -14,14 +14,18 @@ My simple utility app design, made using **Jetpack Compose** and **Material Desi
 ## Composables
 
 ### UtilityApp()
+- Nests variables to be passed between Viewmodels
 - Contains the screen layout using a Scaffold
 - Toggles content between Utility and Settings
 
 ### HomeScreen.kt / HomeScreen()
-- Displays a the homescreen and relevant info  
+- Provides 'at a glance' weather information
+- Calls a weather API for data
+- Displays multiple Cards that hold said data in a clear manner
 
 ### SettingScreen.kt / SettingsScreen()
-- Holder for user preferences or configuration  
+- Holder for user preference on city
+- Allows for choice between multiple Queensland locations
 - Changes behaviour of app
 
 ---
