@@ -6,6 +6,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.assignment3.screens.HomeScreen
+import com.example.assignment3.screens.LearnScreen
+import com.example.assignment3.screens.SettingsScreen
+import com.example.assignment3.screens.UserScreen
 
 
 @Composable
@@ -16,10 +19,24 @@ fun AppNav(
         navController = navHostController,
         startDestination = Screens.HomeScreen.route
     ) {
+        //Home Screen
         composable(Screens.HomeScreen.route) {
-            HomeScreen(
+            HomeScreen()
+        }
 
-            )
+        //Learn Screen
+        composable(Screens.LearnScreen.route) {
+            LearnScreen()
+        }
+
+        //Settings Screen
+        composable(Screens.SettingsScreen.route) {
+            SettingsScreen()
+        }
+
+        //User Screen
+        composable(Screens.UserScreen.route) {
+            UserScreen()
         }
     }
 }
