@@ -9,17 +9,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68a5d345-5c34-4919-95c6-1a235a72ca38" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_settings_24.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/outline_arrow_back_24.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/caches/deviceStreaming.xml" afterDir="false" />
+    <list default="true" id="68a5d345-5c34-4919-95c6-1a235a72ca38" name="Changes" comment="Resumed work and fixed the nav bars">
       <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/navigation/AppNav.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/navigation/AppNav.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/navigation/AppNavContent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/navigation/AppNavContent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screenParts/bottomNavBar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screenParts/bottomNavBar.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screenParts/topRail.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screenParts/topRail.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/HomeScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/HomeScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/LearnScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/LearnScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/SettingsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/SettingsScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/UserScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/UserScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +105,7 @@
     "settings.editor.selected.configurable": "AndroidSdkUpdater"
   }
 }]]></component>
-  <component name="RunManager" selected="Android App.MainActivity (4)">
+  <component name="RunManager" selected="Android App.MainActivity (6)">
     <configuration name="MainActivity (1)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Assignment3.app" />
       <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
@@ -372,7 +370,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainActivity (6)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
+    <configuration name="MainActivity (5)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
       <module name="Assignment3.app" />
       <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
@@ -438,7 +436,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainActivity (7)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
+    <configuration name="MainActivity (6)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
       <module name="Assignment3.app" />
       <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
@@ -638,11 +636,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Android App.MainActivity (6)" />
+        <item itemvalue="Android App.MainActivity (5)" />
         <item itemvalue="Android App.MainActivity (4)" />
         <item itemvalue="Android App.MainActivity (3)" />
         <item itemvalue="Android App.MainActivity" />
-        <item itemvalue="Android App.MainActivity (7)" />
-        <item itemvalue="Android App.MainActivity (6)" />
       </list>
     </recent_temporary>
   </component>
@@ -654,6 +652,35 @@
       <option name="presentableId" value="Default" />
       <updated>1784002012900</updated>
     </task>
+    <task id="LOCAL-00001" summary="Resumed work and fixed the nav bars">
+      <option name="closed" value="true" />
+      <created>1785998963653</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1785998963654</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Resumed work and fixed the nav bars" />
+    <option name="LAST_COMMIT_MESSAGE" value="Resumed work and fixed the nav bars" />
+  </component>
+  <component name="play_dynamic_filters_status">
+    <option name="appIdToCheckInfo">
+      <map>
+        <entry key="com.example.assignment3">
+          <value>
+            <CheckInfo lastCheckTimestamp="1785998960228" />
+          </value>
+        </entry>
+        <entry key="com.example.assignment3.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1785998960239" />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

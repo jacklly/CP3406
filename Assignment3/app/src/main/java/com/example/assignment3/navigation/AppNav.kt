@@ -13,7 +13,7 @@ import com.example.assignment3.screens.UserScreen
 
 @Composable
 fun AppNav(
-    navHostController: NavHostController = rememberNavController(),
+    navHostController: NavHostController,
 ) {
     NavHost(
         navController = navHostController,

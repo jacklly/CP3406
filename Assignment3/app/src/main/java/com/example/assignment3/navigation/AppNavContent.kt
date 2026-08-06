@@ -41,7 +41,7 @@ fun AppNavContent(
             currentScreenSet = currentScreenSet,
         )
         Box (Modifier.weight(1f)) {
-            AppNav()
+            AppNav(navHostController = navHostController)
         }
 
         BottomNavBar(
