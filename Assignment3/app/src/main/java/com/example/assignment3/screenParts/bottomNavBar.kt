@@ -1,14 +1,16 @@
 package com.example.assignment3.screenParts
 
-import android.graphics.drawable.Icon
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.style.TextDirection.Companion.Content
 import com.example.assignment3.R
 import com.example.assignment3.navigation.Screens
 
@@ -17,11 +19,15 @@ fun BottomNavBar(
     onHomeClicked: () -> Unit,
     onLearnClicked: () -> Unit,
     onUserClicked: () -> Unit,
-    currentScreenSet: () -> Unit,
+    currentScreenSet: String?,
+    modifier: Modifier = Modifier
 ) {
 
-    NavigationRail() {
-        NavigationRailItem(
+    NavigationBar(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        //Learn Screen
+        NavigationBarItem(
             selected = currentScreenSet == Screens.LearnScreen.route,
             onClick = {onLearnClicked()},
             icon = {
@@ -31,10 +37,9 @@ fun BottomNavBar(
                 )
             }
         )
-    }
 
-    NavigationRail() {
-        NavigationRailItem(
+        //Home Screen
+        NavigationBarItem(
             selected = currentScreenSet == Screens.HomeScreen.route,
             onClick = {onHomeClicked()},
             icon = {
@@ -44,10 +49,9 @@ fun BottomNavBar(
                 )
             }
         )
-    }
 
-    NavigationRail() {
-        NavigationRailItem(
+        //User Screen
+        NavigationBarItem(
             selected = currentScreenSet == Screens.UserScreen.route,
             onClick = {onUserClicked()},
             icon = {

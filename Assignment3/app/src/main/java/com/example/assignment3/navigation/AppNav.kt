@@ -13,7 +13,7 @@ import com.example.assignment3.screens.UserScreen
 
 @Composable
 fun AppNav(
-    navHostController: NavHostController = rememberNavController()
+    navHostController: NavHostController = rememberNavController(),
 ) {
     NavHost(
         navController = navHostController,
@@ -21,7 +21,9 @@ fun AppNav(
     ) {
         //Home Screen
         composable(Screens.HomeScreen.route) {
-            HomeScreen()
+            HomeScreen(
+                /*onSettingsClicked = navHostController.navigate("${Screens.SettingsScreen.route}")*/
+            )
         }
 
         //Learn Screen

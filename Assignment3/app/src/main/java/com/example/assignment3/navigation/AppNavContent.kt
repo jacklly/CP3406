@@ -1,9 +1,18 @@
 package com.example.assignment3.navigation
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.assignment3.screenParts.TopRail
 import com.example.assignment3.screenParts.BottomNavBar
 
@@ -15,22 +24,31 @@ fun AppNavContent(
     onUserClicked: () -> Unit = {},
     onBackClicked: () -> Unit = {},
     onSettingsClicked: () -> Unit,
-    petsViewModel: PetsViewModel
+    modifier: Modifier = Modifier
 ) {
+    val navBackStackEntry by navHostController.currentBackStackEntryAsState()
     val currentScreenSet = navBackStackEntry?.destination?.route
 
-    Column() {
-        TopRail(
-            onBackClicked = onBackClicked,
-            onSettingsClicked = onSettingsClicked
-        )
 
-        AppNav()
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        
+        TopRail(
+            modifier = Modifier.statusBarsPadding(),
+            onBackClicked = onBackClicked,
+            onSettingsClicked = onSettingsClicked,
+            currentScreenSet = currentScreenSet,
+        )
+        Box (Modifier.weight(1f)) {
+            AppNav()
+        }
 
         BottomNavBar(
             onHomeClicked = onHomeClicked,
             onLearnClicked = onLearnClicked,
-            onUserClicked = onUserClicked
+            onUserClicked = onUserClicked,
+            currentScreenSet = currentScreenSet,
         )
     }
 }
