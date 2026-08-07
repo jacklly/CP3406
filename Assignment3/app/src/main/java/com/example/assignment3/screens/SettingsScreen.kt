@@ -78,9 +78,6 @@ fun SettingsScreen(
                     .padding(10.dp),
                 textAlign = TextAlign.Center,
                 fontSize = 30.sp)
-
-
-
         }
     }
 
