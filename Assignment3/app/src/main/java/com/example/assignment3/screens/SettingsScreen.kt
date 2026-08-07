@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.assignment3.R
 import com.example.assignment3.api.getPuuidCall
 import com.example.assignment3.persistence.DatabaseProvider
@@ -74,9 +75,9 @@ fun SettingsScreen(
             Text(text = "User Saved",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(10.dp)
-                    .size(30.dp),
-                textAlign = TextAlign.Center)
+                    .padding(10.dp),
+                textAlign = TextAlign.Center,
+                fontSize = 30.sp)
 
 
 
