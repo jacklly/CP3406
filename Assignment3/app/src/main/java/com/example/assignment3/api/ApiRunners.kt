@@ -70,3 +70,51 @@ fun getSummonerLevel(
     }
     return summonerLevel
 }
+
+@Composable
+fun getMatchIds(puuid: String): List<String> {
+
+    var matchIdList by remember { mutableStateOf<List<String>>(emptyList()) }
+
+    LaunchedEffect(puuid) {
+        val apiCall = RetrofitCall.api.riotApi(
+            "https://sea.api.riotgames.com/lol/match/v5/matches/by-puuid/$puuid/ids?start=0&count=20&api_key=$apiKey")
+
+        val apiString = apiCall.string()
+        val apiJSON = JSONArray(apiString)
+        val ids = mutableListOf<String>()
+
+        for (i in 0 until apiJSON.length()) { ids.add(apiJSON.getString(i)) }
+
+        matchIdList = ids
+    }
+
+    return matchIdList
+}
+
+@Composable
+fun getMatchInfo(matchId: String, puuid: String): JSONObject? {
+
+    var playerData by remember { mutableStateOf<JSONObject?>(null)}
+
+    LaunchedEffect(matchId, puuid) {
+        val apiCall = RetrofitCall.api.riotApi(
+            "https://sea.api.riotgames.com/lol/match/v5/matches/$matchId?api_key=$apiKey")
+
+        val apiString = apiCall.string()
+        val apiJSON = JSONObject(apiString)
+        val info = apiJSON.getJSONObject("info")
+        val participants = info.getJSONArray("participants")
+
+        for (i in 0 until participants.length()) {
+
+            val participant = participants.getJSONObject(i)
+
+            if (participant.getString("puuid") == puuid) {
+                playerData = participant
+                break
+            }
+        }
+    }
+    return playerData
+}
