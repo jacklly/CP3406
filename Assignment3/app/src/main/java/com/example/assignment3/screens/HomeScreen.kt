@@ -59,6 +59,7 @@ import com.example.assignment3.uiBuildParts.MasteryList
 fun HomeScreen(
 
 ) {
+    //background set
     Image(
         modifier = Modifier.fillMaxSize(),
         painter = painterResource(id = com.example.assignment3.R.drawable.background1),
@@ -67,13 +68,15 @@ fun HomeScreen(
     )
 
     //Code
+
+    //prep variables
     var username by remember { mutableStateOf("") }
     val context = LocalContext.current
     val db = remember { DatabaseProvider.getDatabase(context) }
     val scope = rememberCoroutineScope()
     var puuidValue by remember { mutableStateOf("") }
     var champ1 by remember { mutableStateOf(0) }
-    var champ1Points by remember { mutableStateOf(0) }
+    var summonerLevel by remember { mutableStateOf(0) }
     var champName: String? by remember { mutableStateOf("") }
     var imageRes: Int by remember { mutableIntStateOf(0) }
 
@@ -89,11 +92,11 @@ fun HomeScreen(
         }
     }
     
-    //ensure there's a puuid, then do:
+    //ensure there's a puuid, then use data
     if (puuidValue != "") {
         val masteryList = getMasteryList(puuidValue)
         champ1 = masteryList?.getJSONObject(0)?.getInt("championId") ?: 0
-        champ1Points = getSummonerLevel(puuidValue)
+        summonerLevel = getSummonerLevel(puuidValue)
         champName = championMap[champ1]
 
         imageRes = LocalResources.current.getIdentifier(
@@ -106,11 +109,12 @@ fun HomeScreen(
     Column(modifier = Modifier.fillMaxSize()) {
         Card(modifier = Modifier
             .fillMaxWidth()
-            .padding(10.dp),
+            .padding(horizontal = 10.dp).padding(top = 10.dp),
             colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.8f))
+                containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.7f))
         ) {
             Row() {
+                //Image of most played character
                 if (imageRes != 0) {
                     Box(modifier = Modifier.padding(5.dp)) {
                         Image(
@@ -120,9 +124,11 @@ fun HomeScreen(
                         )
                     }
                 }
+
                 Column(modifier = Modifier.height(110.dp),
                     verticalArrangement = Arrangement.Center)
                 {
+                    //in-game name
                     Text(
                         text = username,
                         textAlign = TextAlign.Center,
@@ -134,8 +140,9 @@ fun HomeScreen(
                         color = Color.Black
                     )
 
+                    //summoner level
                     Text(
-                        text = "Level $champ1Points",
+                        text = "Level $summonerLevel",
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxWidth(),
@@ -143,6 +150,30 @@ fun HomeScreen(
                         fontSize = 20.sp
                     )
                 }
+            }
+        }
+
+        Text(
+            text = "Your Champion Mastery",
+            modifier = Modifier.fillMaxWidth().padding(10.dp),
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            fontSize = 30.sp,
+            color = Color.White
+
+        )
+
+        //List off champs most played -> descending
+        Card(
+            modifier = Modifier.padding(horizontal = 10.dp).padding(bottom = 10.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.8f))
+        ) {
+            if (puuidValue != "") {
+                MasteryList(puuidValue)
+            }
+            else {
+                Text(text = "Please go to Settings (top right) and set a user!\nFeel free to try: 'Aniki' in both boxes (creator's user)")
             }
         }
     }

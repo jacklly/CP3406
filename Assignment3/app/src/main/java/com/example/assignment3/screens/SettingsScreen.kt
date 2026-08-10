@@ -1,8 +1,10 @@
 package com.example.assignment3.screens
 
 import android.util.Log
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -43,7 +45,8 @@ fun SettingsScreen(
     val context = LocalContext.current
     val db = remember { DatabaseProvider.getDatabase(context) }
 
-    Column(modifier = Modifier.fillMaxWidth()) {
+    Column(modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center) {
         OutlinedTextField(
             value = gameName,
             onValueChange = { gameName = it },

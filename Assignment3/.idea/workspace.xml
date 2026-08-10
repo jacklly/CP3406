@@ -9,13 +9,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68a5d345-5c34-4919-95c6-1a235a72ca38" name="Changes" comment="fixed error with puuid not saving and added list feature">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/background1.webp" afterDir="false" />
+    <list default="true" id="68a5d345-5c34-4919-95c6-1a235a72ca38" name="Changes" comment="added a background and fixed homescreen">
       <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/api/ApiRunners.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/api/ApiRunners.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/api/RiotApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/api/RiotApi.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/HomeScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/HomeScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/SettingsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/SettingsScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/uiBuildParts/MasteryList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/uiBuildParts/MasteryList.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +112,7 @@
       <recent name="C:\Users\jckkl\Documents\CP3406\Assignment3\app\src\main\res\drawable" />
     </key>
   </component>
-  <component name="RunManager" selected="Android App.MainActivity (3)">
+  <component name="RunManager" selected="Android App.MainActivity (4)">
     <configuration name="MainActivity (1)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Assignment3.app" />
       <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
@@ -312,7 +311,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainActivity (5)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
+    <configuration name="MainActivity (4)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
       <module name="Assignment3.app" />
       <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
@@ -710,11 +709,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Android App.MainActivity (4)" />
         <item itemvalue="Android App.MainActivity (3)" />
         <item itemvalue="Android App.MainActivity (8)" />
         <item itemvalue="Android App.MainActivity (7)" />
         <item itemvalue="Android App.MainActivity (6)" />
-        <item itemvalue="Android App.MainActivity (5)" />
       </list>
     </recent_temporary>
   </component>
@@ -774,7 +773,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786325216061</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added a background and fixed homescreen">
+      <option name="closed" value="true" />
+      <created>1786328281954</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1786328281954</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -784,7 +791,8 @@
     <MESSAGE value="worked more on room stuff and added all icons needed" />
     <MESSAGE value="more work on api calls and ui setup - also added champ pngs" />
     <MESSAGE value="fixed error with puuid not saving and added list feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed error with puuid not saving and added list feature" />
+    <MESSAGE value="added a background and fixed homescreen" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a background and fixed homescreen" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
