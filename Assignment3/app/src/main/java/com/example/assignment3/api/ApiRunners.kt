@@ -22,7 +22,7 @@ fun getPuuidCall(
     var validPuuid by remember { mutableStateOf<String>("") }
 
     LaunchedEffect(gameName, tagLine) {
-        val puuid = RetrofitCall.api.getPuuid("account/v1/accounts/by-riot-id/$gameName/$tagLine?api_key=$apiKey")
+        val puuid = RetrofitCall.api.riotApi("account/v1/accounts/by-riot-id/$gameName/$tagLine?api_key=$apiKey")
 
         val puuidString: String = puuid.string()
 
@@ -43,8 +43,8 @@ fun getMasteryList(
     val cleanPuuid = puuid.trim()
 
     LaunchedEffect(cleanPuuid) {
-        val masteryList = RetrofitCall.api.getMasteryList(
-            "https://oc1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/$puuid?api_key=$apiKey")
+        val masteryList = RetrofitCall.api.riotApi(
+            "https://oc1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/$puuid/top?count=10&api_key=$apiKey")
 
         val apiString = masteryList.string()
 
@@ -52,4 +52,21 @@ fun getMasteryList(
     }
 
     return fullList
+}
+
+@Composable
+fun getSummonerLevel(
+    puuid: String
+): Int {
+    var summonerLevel by remember { mutableStateOf(0) }
+    LaunchedEffect(puuid) {
+        val apiCall = RetrofitCall.api.riotApi(
+            "https://oc1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/$puuid?api_key=$apiKey")
+
+        val apiString = apiCall.string()
+        val apiJSON = JSONObject(apiString)
+
+        summonerLevel = apiJSON.getInt("summonerLevel")
+    }
+    return summonerLevel
 }

@@ -7,12 +7,7 @@ import retrofit2.http.Url
 
 interface RiotApi {
     @GET
-    suspend fun getPuuid(
-        @Url url: String
-    ): ResponseBody
-
-    @GET
-    suspend fun getMasteryList(
+    suspend fun riotApi(
         @Url url: String
     ): ResponseBody
 }
