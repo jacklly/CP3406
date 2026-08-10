@@ -9,16 +9,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68a5d345-5c34-4919-95c6-1a235a72ca38" name="Changes" comment="finalised home screen">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/uiBuildParts/MatchList.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/background2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/background3.jpg" afterDir="false" />
+    <list default="true" id="68a5d345-5c34-4919-95c6-1a235a72ca38" name="Changes" comment="added more backgrounds, and created and began using match history function">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/damage.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/ward.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/api/ApiRunners.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/api/ApiRunners.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/LearnScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/LearnScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/SettingsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/SettingsScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/UserScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/UserScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/uiBuildParts/MatchList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/uiBuildParts/MatchList.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,31 +82,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Android App.MainActivity (1).executor&quot;: &quot;Run&quot;,
-    &quot;Android App.MainActivity (3).executor&quot;: &quot;Run&quot;,
-    &quot;Android App.MainActivity (4).executor&quot;: &quot;Run&quot;,
-    &quot;Android App.MainActivity (5).executor&quot;: &quot;Run&quot;,
-    &quot;Android App.MainActivity (6).executor&quot;: &quot;Run&quot;,
-    &quot;Android App.MainActivity (7).executor&quot;: &quot;Run&quot;,
-    &quot;Android App.MainActivity (8).executor&quot;: &quot;Run&quot;,
-    &quot;Android App.MainActivity.executor&quot;: &quot;Run&quot;,
-    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;ResourceManagerPrefKey.ResourceType&quot;: &quot;DRAWABLE&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jckkl/Documents/CP3406/Assignment3&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.android.studio.ml.bot.mainConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.MainActivity (1).executor": "Run",
+    "Android App.MainActivity (3).executor": "Run",
+    "Android App.MainActivity (4).executor": "Run",
+    "Android App.MainActivity (5).executor": "Run",
+    "Android App.MainActivity (6).executor": "Run",
+    "Android App.MainActivity (7).executor": "Run",
+    "Android App.MainActivity (8).executor": "Debug",
+    "Android App.MainActivity.executor": "Run",
+    "Android App.app.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "ResourceManagerPrefKey.ResourceType": "DRAWABLE",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/jckkl/Documents/CP3406/Assignment3",
+    "settings.editor.selected.configurable": "com.android.studio.ml.bot.mainConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jckkl\Documents\CP3406\Assignment3\app\src\main\res\drawable" />
@@ -793,7 +789,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786332921747</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added more backgrounds, and created and began using match history function">
+      <option name="closed" value="true" />
+      <created>1786340345234</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1786340345234</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -805,7 +809,8 @@
     <MESSAGE value="fixed error with puuid not saving and added list feature" />
     <MESSAGE value="added a background and fixed homescreen" />
     <MESSAGE value="finalised home screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="finalised home screen" />
+    <MESSAGE value="added more backgrounds, and created and began using match history function" />
+    <option name="LAST_COMMIT_MESSAGE" value="added more backgrounds, and created and began using match history function" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
