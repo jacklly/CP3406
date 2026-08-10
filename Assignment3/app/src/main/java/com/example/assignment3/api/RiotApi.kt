@@ -14,5 +14,5 @@ interface RiotApi {
     @GET
     suspend fun getMasteryList(
         @Url url: String
-    ): List<JSONObject>
+    ): ResponseBody
 }

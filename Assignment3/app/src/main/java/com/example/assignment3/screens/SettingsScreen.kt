@@ -1,5 +1,6 @@
 package com.example.assignment3.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -88,9 +89,8 @@ fun SettingsScreen(
             textEntry[1]
         )
 
-        LaunchedEffect(textEntry) {
+        LaunchedEffect(textEntry, puuid) {
             CoroutineScope(Dispatchers.IO).launch {
-
                 db.userDao().saveUser(
                     User(
                         puuid = puuid,

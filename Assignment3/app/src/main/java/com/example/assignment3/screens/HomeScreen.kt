@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -33,6 +34,7 @@ import com.example.assignment3.persistence.DatabaseProvider
 import kotlinx.coroutines.launch
 import java.io.File
 import androidx.compose.ui.platform.LocalResources
+import com.example.assignment3.uiBuildParts.MasteryList
 
 
 @SuppressLint("DiscouragedApi")
@@ -48,7 +50,9 @@ fun HomeScreen(
     var puuidValue by remember { mutableStateOf("") }
     var champ1 by remember { mutableStateOf(0) }
     var champName: String? by remember { mutableStateOf("") }
+    var imageRes: Int by remember { mutableIntStateOf(0) }
 
+    //grab user data
     LaunchedEffect(Unit) {
         scope.launch {
 
@@ -61,19 +65,22 @@ fun HomeScreen(
     }
 
     if (puuidValue != "") {
-        val champion = getMasteryList(puuidValue)
-
-        champ1 = champion[0].getInt("championId")
-
+        //fetch champ with highest mastery
+        val masteryList = getMasteryList(puuidValue)
+        champ1 = masteryList?.getJSONObject(0)?.getInt("championId") ?: 0
         champName = championMap[champ1]
-    }
 
-    val imageRes = LocalResources.current.getIdentifier(champName?.lowercase(),
-        "drawable",context.packageName)
+        Log.d("PUUIDVALUE", "[$puuidValue]")
+
+        imageRes = LocalResources.current.getIdentifier(
+            champName?.lowercase() ?: "",
+            "drawable", context.packageName
+        )
+    }
 
     //UI
     Column(modifier = Modifier.fillMaxSize()) {
-        Text(text = "$champ1",
+        Text(text = username,
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .padding(10.dp)
@@ -90,6 +97,9 @@ fun HomeScreen(
                         contentDescription = champName
                     )
                 }
+            }
+            if (puuidValue != "") {
+                MasteryList(puuidValue)
             }
         }
     }

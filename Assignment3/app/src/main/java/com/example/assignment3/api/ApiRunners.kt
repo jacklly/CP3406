@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import okhttp3.ResponseBody
+import org.json.JSONArray
 import org.json.JSONObject
 
 val apiKey = ApiKey().loadKey()
@@ -37,12 +38,18 @@ fun getPuuidCall(
 @Composable
 fun getMasteryList(
     puuid: String
-): List<JSONObject> {
-    var masteryList by remember { mutableStateOf(emptyList<JSONObject>()) }
+): JSONArray? {
+    var fullList by remember { mutableStateOf<JSONArray?>(null) }
+    val cleanPuuid = puuid.trim()
 
-    LaunchedEffect(puuid) {
-        masteryList = RetrofitCall.api.getMasteryList(
-            "https://oc1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/$puuid/top?count=10&api_key=$apiKey")
+    LaunchedEffect(cleanPuuid) {
+        val masteryList = RetrofitCall.api.getMasteryList(
+            "https://oc1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/$puuid?api_key=$apiKey")
+
+        val apiString = masteryList.string()
+
+        fullList = JSONArray(apiString)
     }
-    return masteryList
+
+    return fullList
 }
