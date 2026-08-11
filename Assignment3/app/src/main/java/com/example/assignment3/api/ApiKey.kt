@@ -2,6 +2,6 @@ package com.example.assignment3.api
 
 class ApiKey {
     fun loadKey(): String {
-        return "RGAPI-8f752f2e-52d2-4542-9519-5418fe1cd5cf"
+        return "RGAPI-cf0b1698-9a45-47c4-ad2d-f8728956190d"
     }
 }

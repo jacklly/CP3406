@@ -3,9 +3,11 @@ package com.example.assignment3.uiBuildParts
 import android.R
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -21,6 +23,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -65,12 +68,17 @@ fun MatchList(puuid: String) {
             //calc extra data
             val gameLengthMinutes: Long = gameLength?.div(60) ?: 0
             val damagePerMinute = damageToChamps?.div(gameLengthMinutes)
-            val visionScorePerMinute = visionScore?.div(gameLengthMinutes)
+            val visionScorePerMinute: Long? = visionScore?.div(gameLengthMinutes)
 
             val champId = matchInfo?.getInt("championId")
 
-            val kda: Double? =
-                deaths?.let { ((assists?.let { kills?.plus(it) ?: 0.0 })?.toDouble() ?: 0.0)/it }
+            var kda by remember { mutableIntStateOf(0) }
+            if (deaths != 0) {
+                assists?.let { deaths?.let { it1 -> kills?.plus(it)?.let { it2 -> kda = (it2) / it1 } } }
+            }
+            else {
+                assists?.let { kills?.let { it1 -> kda = it1 + it } }
+            }
 
             //grab champ image
             val currentChampionName: String? = championMap[champId]
@@ -79,10 +87,10 @@ fun MatchList(puuid: String) {
                 "drawable", context.packageName
             )
 
-            var cardColor = Color.Red
+            var cardColor = Color(0xFFFF6961)
 
             if (outcome == "true") {
-                cardColor = Color.Green
+                cardColor = Color(0xFF80EF80)
             }
 
             Card(modifier = Modifier
@@ -90,14 +98,22 @@ fun MatchList(puuid: String) {
                 .padding(horizontal = 10.dp)
                 .padding(vertical = 5.dp),
                 colors = CardDefaults.cardColors(
-                    containerColor = cardColor.copy(alpha = 0.7f))
+                    containerColor = Color.White.copy(alpha = 0.7f))
             ) {
-                Row(modifier = Modifier.height(50.dp)) {
-                    Box (contentAlignment = Alignment.Center) {
+                Row(modifier = Modifier.height(50.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box (contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .background(cardColor)
+                            .height(50.dp)
+                    ) {
                         if (outcome == "true") {
                             Text(
                                 text = "W",
-                                modifier = Modifier.width(30.dp),
+                                modifier = Modifier
+                                    .width(30.dp)
+                                    .padding(horizontal = 10.dp),
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 20.sp,
                                 color = Color.Black
@@ -105,7 +121,9 @@ fun MatchList(puuid: String) {
                         } else {
                             Text(
                                 text = "L",
-                                modifier = Modifier.width(30.dp),
+                                modifier = Modifier
+                                    .width(30.dp)
+                                    .padding(horizontal = 10.dp),
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 20.sp,
                                 color = Color.Black
@@ -119,36 +137,44 @@ fun MatchList(puuid: String) {
                             contentDescription = "Image of $currentChampionName",
                             Modifier
                                 .size(50.dp)
-                                .clip(RoundedCornerShape(10.dp))
                         )
                     }
 
-                    Column {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.size(50.dp)
+                    ) {
                         Image(
                             painter = painterResource(id = com.example.assignment3.R.drawable.ward),
                             contentDescription = "ward image",
-                            modifier = Modifier.size(10.dp)
+                            modifier = Modifier.size(20.dp)
                         )
-                        Text(text = "Vision Score: $visionScore")
-                        Text(text = "$visionScorePerMinute/min")
+                        Text(text = "$visionScore\n$visionScorePerMinute/m",
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                            lineHeight = 15.sp)
                     }
+                    Spacer(Modifier.weight(1f))
 
-                    Column {
+                    Column (
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.size(50.dp)
+                    ) {
                         Image(
                             painter = painterResource(id = com.example.assignment3.R.drawable.damage),
                             contentDescription = "damage image",
-                            modifier = Modifier.size(10.dp)
+                            modifier = Modifier.size(20.dp)
                         )
-                        Text(text = "Damage: $damageToChamps")
-                        Text(text = "$damagePerMinute/min")
+                        Text(text = "$damageToChamps\n$damagePerMinute/m",
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                            lineHeight = 15.sp)
                     }
-
-                    Column() {
+                    Spacer(Modifier.weight(1f))
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Text(text = "$kills / $deaths / $assists")
-                        Text(text = "$kda")
+                        Text(text = "KDA: $kda")
                     }
-
-                    Text(text = "$lane")
                 }
             }
         }
