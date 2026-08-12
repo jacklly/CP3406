@@ -1,5 +1,6 @@
 package com.example.assignment3.screens
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -34,6 +35,7 @@ import androidx.compose.ui.unit.sp
 import com.example.assignment3.R
 import com.example.assignment3.api.getMasteryList
 import com.example.assignment3.api.getPuuidCall
+import com.example.assignment3.api.getRank
 import com.example.assignment3.dragontailAssets.championMap
 import com.example.assignment3.persistence.DatabaseProvider
 import com.example.assignment3.persistence.User
@@ -49,7 +51,7 @@ fun SettingsScreen(
     //background set
     Image(
         modifier = Modifier.fillMaxSize(),
-        painter = painterResource(id = com.example.assignment3.R.drawable.background1),
+        painter = painterResource(id = R.drawable.background1),
         contentDescription = "background for landing page",
         contentScale = ContentScale.Crop
     )
@@ -123,15 +125,31 @@ fun SettingsScreen(
             textEntry[1]
         )
 
-        //save user info to room
-        LaunchedEffect(textEntry, puuid) {
-            CoroutineScope(Dispatchers.IO).launch {
-                db.userDao().saveUser(
-                    User(
-                        puuid = puuid,
-                        username = "$gameName#$tagLine"
-                    )
-                )
+        //get jsonobject with ranked info
+        var rankedInfo: JSONObject? = null
+
+        //ensure there's a puuid
+        if (puuid != "") {
+
+            rankedInfo = getRank(puuid)
+
+            //ensure we have rankedinfo
+            if (rankedInfo != null) {
+                //save user info to room
+                LaunchedEffect(textEntry, puuid, rankedInfo) {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        db.userDao().saveUser(
+                            User(
+                                puuid = puuid,
+                                username = "$gameName#$tagLine",
+                                tier = rankedInfo.getString("tier") ?: "bad call",
+                                rank = rankedInfo.getString("rank") ?: "",
+                                wins = rankedInfo.getInt("wins") ?: 0,
+                                losses = rankedInfo.getInt("losses") ?: 0,
+                            )
+                        )
+                    }
+                }
             }
         }
     }

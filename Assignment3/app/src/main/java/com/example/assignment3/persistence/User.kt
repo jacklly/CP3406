@@ -8,5 +8,9 @@ data class User(
     @PrimaryKey
     val id: Int = 1,
     val puuid: String,
-    val username: String
+    val username: String,
+    val tier: String,
+    val rank: String,
+    val wins: Int,
+    val losses: Int
 )

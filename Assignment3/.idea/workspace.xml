@@ -9,17 +9,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68a5d345-5c34-4919-95c6-1a235a72ca38" name="Changes" comment="got match history working - need to do work on it's UI though">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/creepscore.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/damage.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ward.png" afterDir="false" />
+    <list default="true" id="68a5d345-5c34-4919-95c6-1a235a72ca38" name="Changes" comment="finished match history function!">
       <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/api/ApiKey.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/api/ApiKey.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/uiBuildParts/MatchList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/uiBuildParts/MatchList.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/damage.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/ward.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/api/ApiRunners.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/api/ApiRunners.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/persistence/Database.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/persistence/Database.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/persistence/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/persistence/User.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/SettingsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/SettingsScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/UserScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/UserScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,9 +54,9 @@
       <list>
         <option value="Kotlin Class" />
         <option value="Kotlin Object" />
-        <option value="Kotlin Data Class" />
         <option value="Kotlin Interface" />
         <option value="Kotlin File" />
+        <option value="Kotlin Data Class" />
       </list>
     </option>
   </component>
@@ -117,7 +114,7 @@
       <recent name="C:\Users\jckkl\Documents\CP3406\Assignment3\app\src\main\res\drawable" />
     </key>
   </component>
-  <component name="RunManager" selected="Android App.MainActivity (8)">
+  <component name="RunManager" selected="Android App.MainActivity (4)">
     <configuration name="MainActivity (1)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Assignment3.app" />
       <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
@@ -250,7 +247,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainActivity (4)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
+    <configuration name="MainActivity (3)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
       <module name="Assignment3.app" />
       <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
@@ -316,7 +313,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainActivity (5)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
+    <configuration name="MainActivity (4)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
       <module name="Assignment3.app" />
       <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
@@ -714,11 +711,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Android App.MainActivity (4)" />
+        <item itemvalue="Android App.MainActivity (3)" />
         <item itemvalue="Android App.MainActivity (8)" />
         <item itemvalue="Android App.MainActivity (7)" />
         <item itemvalue="Android App.MainActivity (6)" />
-        <item itemvalue="Android App.MainActivity (5)" />
-        <item itemvalue="Android App.MainActivity (4)" />
       </list>
     </recent_temporary>
   </component>
@@ -810,7 +807,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786347277086</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="finished match history function!">
+      <option name="closed" value="true" />
+      <created>1786507587810</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1786507587810</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -824,19 +829,20 @@
     <MESSAGE value="finalised home screen" />
     <MESSAGE value="added more backgrounds, and created and began using match history function" />
     <MESSAGE value="got match history working - need to do work on it's UI though" />
-    <option name="LAST_COMMIT_MESSAGE" value="got match history working - need to do work on it's UI though" />
+    <MESSAGE value="finished match history function!" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished match history function!" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
       <map>
         <entry key="com.example.assignment3">
           <value>
-            <CheckInfo lastCheckTimestamp="1786347261700" />
+            <CheckInfo lastCheckTimestamp="1786507583115" />
           </value>
         </entry>
         <entry key="com.example.assignment3.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1786347261674" />
+            <CheckInfo lastCheckTimestamp="1786507583148" />
           </value>
         </entry>
       </map>

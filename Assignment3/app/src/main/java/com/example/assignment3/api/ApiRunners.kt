@@ -3,6 +3,7 @@ package com.example.assignment3.api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -117,4 +118,31 @@ fun getMatchInfo(matchId: String, puuid: String): JSONObject? {
         }
     }
     return playerData
+}
+
+@Composable
+fun getRank(puuid: String): JSONObject? {
+    var result by remember { mutableStateOf<JSONObject?>(null) }
+
+    LaunchedEffect(puuid) {
+        val apiCall = RetrofitCall.api.riotApi(
+            "https://oc1.api.riotgames.com/lol/league/v4/entries/by-puuid/$puuid?api_key=$apiKey"
+        )
+        val apiString = apiCall.string()
+        val apiJSON = JSONArray(apiString)
+
+        val data = mutableListOf<String>()
+
+        for (i in 0 until apiJSON.length()) {
+            val set = apiJSON.getJSONObject(i)
+            val queue = set.getString("queueType")
+
+            //get soloqueue data
+            if (queue == "RANKED_SOLO_5x5") {
+                result = set
+                break
+            }
+        }
+    }
+    return result
 }
