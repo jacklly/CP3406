@@ -36,6 +36,7 @@ import com.example.assignment3.R
 import com.example.assignment3.api.getMasteryList
 import com.example.assignment3.api.getPuuidCall
 import com.example.assignment3.api.getRank
+import com.example.assignment3.api.getSummonerInfo
 import com.example.assignment3.dragontailAssets.championMap
 import com.example.assignment3.persistence.DatabaseProvider
 import com.example.assignment3.persistence.User
@@ -126,12 +127,16 @@ fun SettingsScreen(
         )
 
         //get jsonobject with ranked info
-        var rankedInfo: JSONObject? = null
+        var rankedInfo: JSONObject? = JSONObject()
+        var summonerInfo: JSONObject? = JSONObject()
+        var summonerLevel: Int = 0
+        var summonerIcon: Int = 0
 
         //ensure there's a puuid
         if (puuid != "") {
 
             rankedInfo = getRank(puuid)
+            summonerInfo = getSummonerInfo(puuid)
 
             //ensure we have rankedinfo
             if (rankedInfo != null) {
@@ -146,6 +151,8 @@ fun SettingsScreen(
                                 rank = rankedInfo.getString("rank") ?: "",
                                 wins = rankedInfo.getInt("wins") ?: 0,
                                 losses = rankedInfo.getInt("losses") ?: 0,
+                                summonerLevel = summonerInfo.getInt("summonerLevel"),
+                                summonerIcon = summonerInfo.getInt("profileIconId"),
                             )
                         )
                     }

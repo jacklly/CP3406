@@ -56,10 +56,10 @@ fun getMasteryList(
 }
 
 @Composable
-fun getSummonerLevel(
+fun getSummonerInfo(
     puuid: String
-): Int {
-    var summonerLevel by remember { mutableStateOf(0) }
+): JSONObject {
+    var summonerInfo by remember { mutableStateOf(JSONObject()) }
     LaunchedEffect(puuid) {
         val apiCall = RetrofitCall.api.riotApi(
             "https://oc1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/$puuid?api_key=$apiKey")
@@ -67,9 +67,9 @@ fun getSummonerLevel(
         val apiString = apiCall.string()
         val apiJSON = JSONObject(apiString)
 
-        summonerLevel = apiJSON.getInt("summonerLevel")
+        summonerInfo = apiJSON
     }
-    return summonerLevel
+    return summonerInfo
 }
 
 @Composable

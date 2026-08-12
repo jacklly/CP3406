@@ -12,5 +12,7 @@ data class User(
     val tier: String,
     val rank: String,
     val wins: Int,
-    val losses: Int
+    val losses: Int,
+    val summonerLevel: Int,
+    val summonerIcon: Int
 )

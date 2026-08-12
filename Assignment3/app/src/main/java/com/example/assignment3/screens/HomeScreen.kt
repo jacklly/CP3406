@@ -50,8 +50,9 @@ import com.example.assignment3.persistence.DatabaseProvider
 import kotlinx.coroutines.launch
 import java.io.File
 import androidx.compose.ui.platform.LocalResources
-import com.example.assignment3.api.getSummonerLevel
+import coil.compose.AsyncImage
 import com.example.assignment3.uiBuildParts.MasteryList
+import org.json.JSONObject
 
 
 @SuppressLint("DiscouragedApi")
@@ -75,10 +76,11 @@ fun HomeScreen(
     val db = remember { DatabaseProvider.getDatabase(context) }
     val scope = rememberCoroutineScope()
     var puuidValue by remember { mutableStateOf("") }
-    var champ1 by remember { mutableStateOf(0) }
-    var summonerLevel by remember { mutableStateOf(0) }
+    var summonerInfo by remember { mutableStateOf(JSONObject()) }
     var champName: String? by remember { mutableStateOf("") }
     var imageRes: Int by remember { mutableIntStateOf(0) }
+    var summonerLevel by remember { mutableIntStateOf(0) }
+    var summonerIcon by remember { mutableIntStateOf(0) }
 
     //grab user data
     LaunchedEffect(Unit) {
@@ -86,23 +88,11 @@ fun HomeScreen(
 
             val user = db.userDao().getUser()
 
+            summonerIcon = user?.summonerIcon ?: 0
+            summonerLevel = user?.summonerLevel ?: 0
             puuidValue = user?.puuid ?: ""
-
             username = user?.username ?: "No user found"
         }
-    }
-    
-    //ensure there's a puuid, then use data
-    if (puuidValue != "") {
-        val masteryList = getMasteryList(puuidValue)
-        champ1 = masteryList?.getJSONObject(0)?.getInt("championId") ?: 0
-        summonerLevel = getSummonerLevel(puuidValue)
-        champName = championMap[champ1]
-
-        imageRes = LocalResources.current.getIdentifier(
-            champName?.lowercase() ?: "",
-            "drawable", context.packageName
-        )
     }
 
     //UI
@@ -114,13 +104,15 @@ fun HomeScreen(
                 containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.7f))
         ) {
             Row() {
-                //Image of most played character
-                if (imageRes != 0) {
+                //Display summoner icon
+                if (puuidValue != "") {
                     Box(modifier = Modifier.padding(5.dp)) {
-                        Image(
-                            painter = painterResource(imageRes),
-                            contentDescription = champName,
-                            Modifier.size(100.dp).clip(RoundedCornerShape(10.dp))
+                        AsyncImage(
+                            model = "https://ddragon.leagueoflegends.com/cdn/16.15.1/img/profileicon/$summonerIcon.png",
+                            contentDescription = "summoner icon No. $summonerIcon",
+                            modifier = Modifier
+                                .size(100.dp)
+                                .clip(RoundedCornerShape(15.dp))
                         )
                     }
                 }
