@@ -2,8 +2,10 @@ package com.example.assignment3.uiBuildParts
 
 import android.R
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,6 +25,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -35,14 +38,16 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.example.assignment3.api.getMatchIds
 import com.example.assignment3.api.getMatchInfo
 import com.example.assignment3.dragontailAssets.championMap
 
 
-@SuppressLint("DiscouragedApi")
+@SuppressLint("DiscouragedApi", "DefaultLocale")
 @Composable
 fun MatchList(puuid: String) {
     val context = LocalContext.current
@@ -59,26 +64,21 @@ fun MatchList(puuid: String) {
             val kills = matchInfo?.getInt("kills")
             val deaths = matchInfo?.getInt("deaths")
             val assists = matchInfo?.getInt("assists")
-            val lane = matchInfo?.getString("lane")
             val outcome = matchInfo?.getString("win")
-            val gameLength = matchInfo?.getLong("timePlayed")
+            val gameLength = matchInfo?.getInt("timePlayed")
             val damageToChamps = matchInfo?.getInt("totalDamageDealtToChampions")
-            val visionScore = matchInfo?.getInt("visionScore")
-
-            //calc extra data
-            val gameLengthMinutes: Long = gameLength?.div(60) ?: 0
-            val damagePerMinute = damageToChamps?.div(gameLengthMinutes)
-            val visionScorePerMinute: Long? = visionScore?.div(gameLengthMinutes)
-
+            val visionScore = matchInfo?.getDouble("visionScore")
+            val creepScore = matchInfo?.getDouble("totalMinionsKilled")
             val champId = matchInfo?.getInt("championId")
 
-            var kda by remember { mutableIntStateOf(0) }
-            if (deaths != 0) {
-                assists?.let { deaths?.let { it1 -> kills?.plus(it)?.let { it2 -> kda = (it2) / it1 } } }
-            }
-            else {
-                assists?.let { kills?.let { it1 -> kda = it1 + it } }
-            }
+            //calc extra data
+            val gameLengthMinutes: Int = (gameLength?.div(60) ?: 0)
+            val damagePerMinute: Int? = damageToChamps?.div(gameLengthMinutes)
+            val visionScorePerMinute: Double? = visionScore?.div(gameLengthMinutes)
+            val csAMinute: Double? = (creepScore?.div(gameLengthMinutes))
+
+            val visionScorePM = String.format("%.2f", visionScorePerMinute)
+            val creepScorePM = String.format("%.2f", csAMinute)
 
             //grab champ image
             val currentChampionName: String? = championMap[champId]
@@ -87,16 +87,25 @@ fun MatchList(puuid: String) {
                 "drawable", context.packageName
             )
 
+            val itemNum0 = matchInfo?.getInt("item0") ?: 0
+            val itemNum1 = matchInfo?.getInt("item1") ?: 0
+            val itemNum2 = matchInfo?.getInt("item2") ?: 0
+            val itemNum3 = matchInfo?.getInt("item3") ?: 0
+            val itemNum4 = matchInfo?.getInt("item4") ?: 0
+            val itemNum5 = matchInfo?.getInt("item5") ?: 0
+
             var cardColor = Color(0xFFFF6961)
 
             if (outcome == "true") {
                 cardColor = Color(0xFF80EF80)
             }
 
+            Log.d("item3", "$itemNum2")
+
             Card(modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 10.dp)
-                .padding(vertical = 5.dp),
+                .padding(horizontal = 5.dp)
+                .padding(vertical = 2.5.dp),
                 colors = CardDefaults.cardColors(
                     containerColor = Color.White.copy(alpha = 0.7f))
             ) {
@@ -140,40 +149,128 @@ fun MatchList(puuid: String) {
                         )
                     }
 
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier.size(50.dp)
-                    ) {
-                        Image(
-                            painter = painterResource(id = com.example.assignment3.R.drawable.ward),
-                            contentDescription = "ward image",
-                            modifier = Modifier.size(20.dp)
-                        )
-                        Text(text = "$visionScore\n$visionScorePerMinute/m",
-                            fontSize = 15.sp,
-                            color = Color.Black,
-                            lineHeight = 15.sp)
-                    }
-                    Spacer(Modifier.weight(1f))
+                    Spacer(Modifier.width(2.dp))
 
+                    //damage dealt
                     Column (
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier.size(50.dp)
+                        modifier = Modifier.height(50.dp).width(60.dp)
                     ) {
                         Image(
                             painter = painterResource(id = com.example.assignment3.R.drawable.damage),
                             contentDescription = "damage image",
-                            modifier = Modifier.size(20.dp)
+                            modifier = Modifier.size(17.dp)
                         )
                         Text(text = "$damageToChamps\n$damagePerMinute/m",
                             fontSize = 15.sp,
                             color = Color.Black,
-                            lineHeight = 15.sp)
+                            lineHeight = 15.sp,
+                            textAlign = TextAlign.Center)
                     }
+
+                    Spacer(Modifier.width(2.dp))
+
+                    //creep score
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.height(50.dp).width(60.dp)
+                    ) {
+                        Image(
+                            painter = painterResource(id = com.example.assignment3.R.drawable.creepscore),
+                            contentDescription = "ward image",
+                            modifier = Modifier.size(17.dp)
+                        )
+                        val creepScoreFin = String.format("%.0f", creepScore)
+                        Text(text = "$creepScoreFin\n$creepScorePM/m",
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                            lineHeight = 15.sp,
+                            textAlign = TextAlign.Center)
+                    }
+
+                    Spacer(Modifier.width(2.dp))
+
+                    //vision score
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.height(50.dp).width(60.dp)
+                    ) {
+                        Image(
+                            painter = painterResource(id = com.example.assignment3.R.drawable.ward),
+                            contentDescription = "ward image",
+                            modifier = Modifier.size(17.dp)
+                        )
+                        val visionScoreFin = String.format("%.0f", visionScore)
+                        Text(text = "$visionScoreFin\n$visionScorePM/m",
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                            lineHeight = 15.sp,
+                            textAlign = TextAlign.Center)
+                    }
+
                     Spacer(Modifier.weight(1f))
+
+                    //display kda info
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(text = "$kills / $deaths / $assists")
-                        Text(text = "KDA: $kda")
+                        Text(text = "$kills/$deaths/$assists",
+                            color = Color.Black,
+                            textAlign = TextAlign.Center)
+                    }
+
+                    Spacer(Modifier.weight(1f))
+
+                    //display items
+                    Column(modifier = Modifier.padding(bottom = 2.5.dp)) {
+                        Row {
+                            AsyncImage(
+                                model = "https://ddragon.leagueoflegends.com/cdn/16.15.1/img/item/$itemNum0.png",
+                                contentDescription = "Item $itemNum0",
+                                modifier = Modifier.size(20.dp)
+                            )
+
+                            Spacer(Modifier.width(5.dp))
+
+                            AsyncImage(
+                                model = "https://ddragon.leagueoflegends.com/cdn/16.15.1/img/item/$itemNum1.png",
+                                contentDescription = "Item $itemNum0",
+                                modifier = Modifier.size(20.dp)
+                            )
+
+                            Spacer(Modifier.width(5.dp))
+
+                            AsyncImage(
+                                model = "https://ddragon.leagueoflegends.com/cdn/16.15.1/img/item/$itemNum2.png",
+                                contentDescription = "Item $itemNum0",
+                                modifier = Modifier.size(20.dp)
+                            )
+
+                            Spacer(Modifier.width(5.dp))
+                        }
+                        Row(modifier = Modifier.padding(top = 2.5.dp)) {
+                            AsyncImage(
+                                model = "https://ddragon.leagueoflegends.com/cdn/16.15.1/img/item/$itemNum3.png",
+                                contentDescription = "Item $itemNum0",
+                                modifier = Modifier.size(20.dp)
+                            )
+
+                            Spacer(Modifier.width(5.dp))
+
+                            AsyncImage(
+                                model = "https://ddragon.leagueoflegends.com/cdn/16.15.1/img/item/$itemNum4.png",
+                                contentDescription = "Item $itemNum0",
+                                modifier = Modifier.size(20.dp)
+                            )
+
+                            Spacer(Modifier.width(5.dp))
+
+                            AsyncImage(
+                                model = "https://ddragon.leagueoflegends.com/cdn/16.15.1/img/item/$itemNum5.png",
+                                contentDescription = "Item $itemNum0",
+                                modifier = Modifier.size(20.dp)
+                            )
+
+                            Spacer(Modifier.width(5.dp))
+                        }
                     }
                 }
             }
