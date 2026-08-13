@@ -1,6 +1,8 @@
 package com.example.assignment3.screenParts
 
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -23,33 +25,36 @@ fun TopRail(
     currentScreenSet: String?,
     modifier: Modifier = Modifier
 ) {
-    NavigationBar (modifier = Modifier.padding(top = 50.dp)) {
+    NavigationBar (modifier = Modifier.height(100.dp)) {
+        Row(modifier = Modifier.padding(top = 50.dp)) {
+            //Back
+            NavigationBarItem(
+                selected = false,
+                onClick = { onBackClicked() },
+                icon = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.outline_arrow_back_24),
+                        contentDescription = "Learn Icon",
+                    )
+                }
+            )
 
-        //Back
-        NavigationBarItem(
-            selected = false,
-            onClick = {onBackClicked()},
-            icon = {
-                Icon(
-                    painter = painterResource(id = R.drawable.outline_arrow_back_24),
-                    contentDescription = "Learn Icon",
-                )
-            }
-        )
+            Text(
+                text = "LearnLoL",
+                fontWeight = FontWeight.Bold
+            )
 
-        Text(text = "LearnLoL",
-            fontWeight = FontWeight.Bold)
-
-        //Settings Screen
-        NavigationBarItem(
-            selected = currentScreenSet == Screens.SettingsScreen.route,
-            onClick = {onSettingsClicked()},
-            icon = {
-                Icon(
-                    painter = painterResource(id = R.drawable.baseline_settings_24),
-                    contentDescription = "Learn Icon",
-                )
-            }
-        )
+            //Settings Screen
+            NavigationBarItem(
+                selected = currentScreenSet == Screens.SettingsScreen.route,
+                onClick = { onSettingsClicked() },
+                icon = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.baseline_settings_24),
+                        contentDescription = "Learn Icon",
+                    )
+                }
+            )
+        }
     }
 }

@@ -82,10 +82,6 @@ fun MatchList(puuid: String) {
 
             //grab champ image
             val currentChampionName: String? = championMap[champId]
-            val imageRes = LocalResources.current.getIdentifier(
-                currentChampionName?.lowercase() ?: "",
-                "drawable", context.packageName
-            )
 
             val itemNum0 = matchInfo?.getInt("item0") ?: 0
             val itemNum1 = matchInfo?.getInt("item1") ?: 0
@@ -140,14 +136,12 @@ fun MatchList(puuid: String) {
                         }
                     }
 
-                    if (imageRes != 0) {
-                        Image(
-                            painter = painterResource(imageRes),
-                            contentDescription = "Image of $currentChampionName",
-                            Modifier
-                                .size(50.dp)
-                        )
-                    }
+                    AsyncImage(
+                        model = "https://ddragon.leagueoflegends.com/cdn/16.15.1/img/champion/$currentChampionName.png",
+                        contentDescription = "Item $currentChampionName",
+                        modifier = Modifier
+                            .size(50.dp)
+                    )
 
                     Spacer(Modifier.width(2.dp))
 
