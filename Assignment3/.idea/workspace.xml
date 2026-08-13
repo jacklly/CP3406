@@ -9,15 +9,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68a5d345-5c34-4919-95c6-1a235a72ca38" name="Changes" comment="added some info to Db">
+    <list default="true" id="68a5d345-5c34-4919-95c6-1a235a72ca38" name="Changes" comment="completed userscreen to reasonable degree!">
       <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/api/ApiRunners.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/api/ApiRunners.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/persistence/Database.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/persistence/Database.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/persistence/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/persistence/User.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/HomeScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/HomeScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/SettingsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/SettingsScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/UserScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/UserScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/LearnScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/screens/LearnScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/uiBuildParts/MasteryList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/uiBuildParts/MasteryList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/uiBuildParts/MatchList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/assignment3/uiBuildParts/MatchList.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +112,7 @@
       <recent name="C:\Users\jckkl\Documents\CP3406\Assignment3\app\src\main\res\drawable" />
     </key>
   </component>
-  <component name="RunManager" selected="Android App.MainActivity (5)">
+  <component name="RunManager" selected="Android App.MainActivity (7)">
     <configuration name="MainActivity (1)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Assignment3.app" />
       <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
@@ -446,7 +443,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainActivity (7)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
+    <configuration name="MainActivity (6)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
       <module name="Assignment3.app" />
       <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
@@ -512,7 +509,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainActivity (8)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
+    <configuration name="MainActivity (7)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
       <module name="Assignment3.app" />
       <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
@@ -712,11 +709,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Android App.MainActivity (7)" />
+        <item itemvalue="Android App.MainActivity (6)" />
         <item itemvalue="Android App.MainActivity (5)" />
         <item itemvalue="Android App.MainActivity (4)" />
         <item itemvalue="Android App.MainActivity (3)" />
-        <item itemvalue="Android App.MainActivity (8)" />
-        <item itemvalue="Android App.MainActivity (7)" />
       </list>
     </recent_temporary>
   </component>
@@ -824,7 +821,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786514466113</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="completed userscreen to reasonable degree!">
+      <option name="closed" value="true" />
+      <created>1786518236786</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1786518236786</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -840,7 +845,8 @@
     <MESSAGE value="got match history working - need to do work on it's UI though" />
     <MESSAGE value="finished match history function!" />
     <MESSAGE value="added some info to Db" />
-    <option name="LAST_COMMIT_MESSAGE" value="added some info to Db" />
+    <MESSAGE value="completed userscreen to reasonable degree!" />
+    <option name="LAST_COMMIT_MESSAGE" value="completed userscreen to reasonable degree!" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">

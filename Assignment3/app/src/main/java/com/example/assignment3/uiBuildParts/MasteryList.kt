@@ -35,6 +35,7 @@ import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.example.assignment3.api.getMasteryList
 import com.example.assignment3.dragontailAssets.championMap
 import com.example.assignment3.persistence.DatabaseProvider
@@ -42,6 +43,7 @@ import com.example.assignment3.persistence.User
 import org.json.JSONArray
 import org.json.JSONObject
 
+//composable func to see champion mastery scores
 @SuppressLint("DiscouragedApi")
 @Composable
 fun MasteryList(puuid: String) {
@@ -61,10 +63,6 @@ fun MasteryList(puuid: String) {
             val currentChampionInt: Int = champion.getInt("championId")
             val currentChampionName: String? = championMap[currentChampionInt]
             val currentChampionLevel: Int = champion.getInt("championLevel")
-            val imageRes = LocalResources.current.getIdentifier(
-                currentChampionName?.lowercase() ?: "",
-                "drawable", context.packageName
-            )
 
             Card(
                 modifier = Modifier
@@ -77,10 +75,10 @@ fun MasteryList(puuid: String) {
                         .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Image(
-                        painter = painterResource(imageRes),
-                        contentDescription = "Image of $currentChampionName",
-                        Modifier
+                    AsyncImage(
+                        model = "https://ddragon.leagueoflegends.com/cdn/16.15.1/img/champion/$currentChampionName.png",
+                        contentDescription = "Item $currentChampionName",
+                        modifier = Modifier
                             .size(50.dp)
                             .clip(RoundedCornerShape(5.dp))
                     )

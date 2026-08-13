@@ -46,7 +46,7 @@ import com.example.assignment3.api.getMatchIds
 import com.example.assignment3.api.getMatchInfo
 import com.example.assignment3.dragontailAssets.championMap
 
-
+//composable func that displays the last 20 matches with info to see how you went
 @SuppressLint("DiscouragedApi", "DefaultLocale")
 @Composable
 fun MatchList(puuid: String) {
