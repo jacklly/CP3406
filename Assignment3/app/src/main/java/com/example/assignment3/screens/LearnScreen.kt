@@ -79,8 +79,13 @@ fun LearnScreen(
             }
 
             item {
-                Button(modifier = Modifier.fillMaxSize(),
-                    onClick = { showBasics = true; cardSelected = true }) { }
+                Button(modifier = Modifier.fillMaxSize().padding(horizontal = 10.dp),
+                    onClick = { showBasics = true; cardSelected = true }
+                    ) {
+                    Text(text = "Check out the Basics",
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth())
+                }
             }
 
             //intro to map
@@ -89,7 +94,7 @@ fun LearnScreen(
                     colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.7f))
                 ) {
                     Text(text = "The league map (Summoner's Rift) has three lanes, and a jungle.",
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().padding(5.dp),
                         textAlign = TextAlign.Center,
                         fontSize = 20.sp,
                         color = Color.Black)
@@ -105,8 +110,8 @@ fun LearnScreen(
 
                     )
 
-                    Text(text = "It's up to you where to play,\nBut each lane has a unique identity.",
-                        modifier = Modifier.fillMaxWidth(),
+                    Text(text = "It's up to you where to play,\nBut each lane has a unique identity:",
+                        modifier = Modifier.fillMaxWidth().padding(5.dp),
                         textAlign = TextAlign.Center,
                         fontSize = 20.sp,
                         color = Color.Black)
@@ -123,7 +128,7 @@ fun LearnScreen(
                             text = "Top Lane",
                             modifier = Modifier.fillMaxWidth(),
                             textAlign = TextAlign.Center,
-                            fontSize = 20.sp,
+                            fontSize = 25.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.Bold
                         )
@@ -143,8 +148,7 @@ fun LearnScreen(
                                 " most important in the top lane - so do your best to " +
                                 "practice those!\n\nCheck out our recommended champion below;" +
                                 " Garen!",
-                            textAlign = TextAlign.Center,
-                            fontSize = 15.sp,
+                            fontSize = 20.sp,
                             color = Color.Black,
                             modifier = Modifier.fillMaxWidth().padding(10.dp))
                         Box(
@@ -172,7 +176,7 @@ fun LearnScreen(
                             text = "Jungle",
                             modifier = Modifier.fillMaxWidth(),
                             textAlign = TextAlign.Center,
-                            fontSize = 20.sp,
+                            fontSize = 25.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.Bold
                         )
@@ -190,8 +194,7 @@ fun LearnScreen(
                                 "the upper hand on your teammate; Jungle is for you!" +
                                 "\n\nCheck out our recommended champion below;" +
                                 " Master Yi!",
-                            textAlign = TextAlign.Center,
-                            fontSize = 15.sp,
+                            fontSize = 20.sp,
                             color = Color.Black,
                             modifier = Modifier.fillMaxWidth().padding(10.dp))
                         Box(
@@ -219,7 +222,7 @@ fun LearnScreen(
                             text = "Mid Lane",
                             modifier = Modifier.fillMaxWidth(),
                             textAlign = TextAlign.Center,
-                            fontSize = 20.sp,
+                            fontSize = 25.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.Bold
                         )
@@ -237,8 +240,7 @@ fun LearnScreen(
                                 " your 1v1's to get that early lead and snowball your team to " +
                                 "victory.\n\nCheck out our recommended champion below;" +
                                 " Annie!",
-                            textAlign = TextAlign.Center,
-                            fontSize = 15.sp,
+                            fontSize = 20.sp,
                             color = Color.Black,
                             modifier = Modifier.fillMaxWidth().padding(10.dp))
                         Box(
@@ -266,7 +268,7 @@ fun LearnScreen(
                             text = "Bot Lane - ADC",
                             modifier = Modifier.fillMaxWidth(),
                             textAlign = TextAlign.Center,
-                            fontSize = 20.sp,
+                            fontSize = 25.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.Bold
                         )
@@ -284,8 +286,7 @@ fun LearnScreen(
                                 " enemy realises it, you will have become the monster they never " +
                                 "saw coming.\n\nCheck out our recommended champion below;" +
                                 " Jinx!",
-                            textAlign = TextAlign.Center,
-                            fontSize = 15.sp,
+                            fontSize = 20.sp,
                             color = Color.Black,
                             modifier = Modifier.fillMaxWidth().padding(10.dp))
                         Box(
@@ -313,7 +314,7 @@ fun LearnScreen(
                             text = "Bot Lane - Support",
                             modifier = Modifier.fillMaxWidth(),
                             textAlign = TextAlign.Center,
-                            fontSize = 20.sp,
+                            fontSize = 25.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.Bold
                         )
@@ -331,8 +332,7 @@ fun LearnScreen(
                                 " win, so be on the lookout to help teammates in need!" +
                                 "\n\nCheck out our recommended champion below;" +
                                 " Leona!",
-                            textAlign = TextAlign.Center,
-                            fontSize = 15.sp,
+                            fontSize = 20.sp,
                             color = Color.Black,
                             modifier = Modifier.fillMaxWidth().padding(10.dp))
                         Box(
@@ -355,7 +355,7 @@ fun LearnScreen(
     //Checks for showX
     if (showBasics) {
         ShowBasics(
-            back = { cardSelected = false; showGaren = false }
+            back = { cardSelected = false; showBasics = false }
         )
     }
     if (showGaren) {

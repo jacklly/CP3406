@@ -128,13 +128,6 @@ fun ShowLeona(
                         Row(horizontalArrangement = Arrangement.Center,
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            AsyncImage(
-                                model = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/npe-ft-role-icon-support.png",
-                                contentDescription = "mage icon",
-                                modifier = Modifier
-                                    .size(30.dp).align(CenterVertically).padding(horizontal = 10.dp),
-                                contentScale = ContentScale.Crop
-                            )
                             Text(
                                 text = "$champName: $champBlurb",
                                 fontSize = 30.sp,
