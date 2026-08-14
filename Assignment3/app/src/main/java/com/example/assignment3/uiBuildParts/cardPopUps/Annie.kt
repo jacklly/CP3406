@@ -106,7 +106,7 @@ fun ShowAnnie(
                 }
             }
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                val champSplash = champName+"_0"
+                val champSplash = champName+"_50"
                 item {
                     AsyncImage(
                         model = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/$champSplash.jpg",

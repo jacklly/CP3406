@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.assignment3.R
 import com.example.assignment3.uiBuildParts.cardPopUps.ShowAnnie
+import com.example.assignment3.uiBuildParts.cardPopUps.ShowBasics
 import com.example.assignment3.uiBuildParts.cardPopUps.ShowGaren
 import com.example.assignment3.uiBuildParts.cardPopUps.ShowJinx
 import com.example.assignment3.uiBuildParts.cardPopUps.ShowLeona
@@ -56,16 +57,14 @@ fun LearnScreen(
     var showAnnie by remember { mutableStateOf(false) }
     var showJinx by remember { mutableStateOf(false) }
     var showLeona by remember { mutableStateOf(false) }
+    var showBasics by remember { mutableStateOf(false) }
 
 
 
     if (!cardSelected) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
-            item {
-                Button(
-                    onClick = { cardSelected = true; showGaren = true }
-                ) { }
-            }
+
+            //Learn opener
             item {
                 Card (modifier = Modifier.padding(10.dp).fillMaxWidth(),
                     colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.7f))
@@ -79,6 +78,12 @@ fun LearnScreen(
                 }
             }
 
+            item {
+                Button(modifier = Modifier.fillMaxSize(),
+                    onClick = { showBasics = true; cardSelected = true }) { }
+            }
+
+            //intro to map
             item {
                 Card (modifier = Modifier.padding(10.dp).fillMaxWidth(),
                     colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.7f))
@@ -108,11 +113,12 @@ fun LearnScreen(
                 }
             }
 
+            //top lane
             item{
                 Card(modifier = Modifier.padding(10.dp).fillMaxWidth(),
                     colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.7f))
                 ) {
-                    Row() {
+                    Column() {
                         Text(
                             text = "Top Lane",
                             modifier = Modifier.fillMaxWidth(),
@@ -120,6 +126,13 @@ fun LearnScreen(
                             fontSize = 20.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.Bold
+                        )
+                        AsyncImage(
+                            model = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Poppy_3.jpg",
+                            contentDescription = "Splash art for top lane",
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            contentScale = ContentScale.Crop
                         )
                         Text(text = "Top lane is one of the most self reliant roles in the game." +
                                 "Top laners spend most of the early game isolated from the rest of" +
@@ -132,14 +145,16 @@ fun LearnScreen(
                                 " Garen!",
                             textAlign = TextAlign.Center,
                             fontSize = 15.sp,
-                            color = Color.Black)
+                            color = Color.Black,
+                            modifier = Modifier.fillMaxWidth().padding(10.dp))
                         Box(
-                            contentAlignment = Alignment.Center
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier.fillMaxWidth()
                         ) {
                             Button(
                                 onClick = { showGaren = true; cardSelected = true },
                             ) {
-                                Text(text = "Check Out Garen Here")
+                                Text(text = "Garen")
                             }
                         }
 
@@ -147,11 +162,12 @@ fun LearnScreen(
                 }
             }
 
+            //jungle
             item{
                 Card(modifier = Modifier.padding(10.dp).fillMaxWidth(),
                     colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.7f))
                 ) {
-                    Row() {
+                    Column() {
                         Text(
                             text = "Jungle",
                             modifier = Modifier.fillMaxWidth(),
@@ -159,6 +175,13 @@ fun LearnScreen(
                             fontSize = 20.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.Bold
+                        )
+                        AsyncImage(
+                            model = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Kindred_0.jpg",
+                            contentDescription = "Splash art for jungle",
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            contentScale = ContentScale.Crop
                         )
                         Text(text = "Jungle is the wildcard of the bunch, with assassins, tanks, " +
                                 "fighters, and even supports playing in the trees between" +
@@ -169,14 +192,16 @@ fun LearnScreen(
                                 " Master Yi!",
                             textAlign = TextAlign.Center,
                             fontSize = 15.sp,
-                            color = Color.Black)
+                            color = Color.Black,
+                            modifier = Modifier.fillMaxWidth().padding(10.dp))
                         Box(
-                            contentAlignment = Alignment.Center
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier.fillMaxWidth()
                         ) {
                             Button(
                                 onClick = { showMasterYi = true; cardSelected = true },
                             ) {
-                                Text(text = "Check Out Master Yi Here")
+                                Text(text = "Master Yi")
                             }
                         }
 
@@ -184,11 +209,12 @@ fun LearnScreen(
                 }
             }
 
+            //mid lane
             item{
                 Card(modifier = Modifier.padding(10.dp).fillMaxWidth(),
                     colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.7f))
                 ) {
-                    Row() {
+                    Column() {
                         Text(
                             text = "Mid Lane",
                             modifier = Modifier.fillMaxWidth(),
@@ -196,6 +222,13 @@ fun LearnScreen(
                             fontSize = 20.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.Bold
+                        )
+                        AsyncImage(
+                            model = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Diana_47.jpg",
+                            contentDescription = "Splash art for mid lane",
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            contentScale = ContentScale.Crop
                         )
                         Text(text = "Mid lane is the shortest and most central lane in League of " +
                                 "Legends, making you a core early playmaker for the team." +
@@ -206,14 +239,110 @@ fun LearnScreen(
                                 " Annie!",
                             textAlign = TextAlign.Center,
                             fontSize = 15.sp,
-                            color = Color.Black)
+                            color = Color.Black,
+                            modifier = Modifier.fillMaxWidth().padding(10.dp))
                         Box(
-                            contentAlignment = Alignment.Center
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier.fillMaxWidth()
                         ) {
                             Button(
-                                onClick = { showGaren = true; cardSelected = true },
+                                onClick = { showAnnie = true; cardSelected = true },
                             ) {
-                                Text(text = "Check Out Annie Here")
+                                Text(text = "Annie")
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            //adc
+            item{
+                Card(modifier = Modifier.padding(10.dp).fillMaxWidth(),
+                    colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.7f))
+                ) {
+                    Column() {
+                        Text(
+                            text = "Bot Lane - ADC",
+                            modifier = Modifier.fillMaxWidth(),
+                            textAlign = TextAlign.Center,
+                            fontSize = 20.sp,
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold
+                        )
+                        AsyncImage(
+                            model = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Vayne_11.jpg",
+                            contentDescription = "Splash art for bot lane",
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            contentScale = ContentScale.Crop
+                        )
+                        Text(text = "Bot lane is where you'll find a two versus two matchup!" +
+                                "The ADC (AD Carry) is League's highest damage role when mastered," +
+                                "but be careful - you're a glass cannon!\n" +
+                                "Play around your support to survive and gather gold, then before the" +
+                                " enemy realises it, you will have become the monster they never " +
+                                "saw coming.\n\nCheck out our recommended champion below;" +
+                                " Jinx!",
+                            textAlign = TextAlign.Center,
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                            modifier = Modifier.fillMaxWidth().padding(10.dp))
+                        Box(
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Button(
+                                onClick = { showJinx = true; cardSelected = true },
+                            ) {
+                                Text(text = "Jinx")
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            //support
+            item{
+                Card(modifier = Modifier.padding(10.dp).fillMaxWidth(),
+                    colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.7f))
+                ) {
+                    Column() {
+                        Text(
+                            text = "Bot Lane - Support",
+                            modifier = Modifier.fillMaxWidth(),
+                            textAlign = TextAlign.Center,
+                            fontSize = 20.sp,
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold
+                        )
+                        AsyncImage(
+                            model = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Sona_9.jpg",
+                            contentDescription = "Splash art for bot lane",
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            contentScale = ContentScale.Crop
+                        )
+                        Text(text = "The other half of the botlane; Supports protect those around" +
+                                " them and make plays to setup the team. Securing vision with wards, " +
+                                "crowd control, and healing/shielding are the primary objectives of " +
+                                "this role.\nLike the mid laner - your teamplay is what secures the" +
+                                " win, so be on the lookout to help teammates in need!" +
+                                "\n\nCheck out our recommended champion below;" +
+                                " Leona!",
+                            textAlign = TextAlign.Center,
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                            modifier = Modifier.fillMaxWidth().padding(10.dp))
+                        Box(
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Button(
+                                onClick = { showLeona = true; cardSelected = true },
+                            ) {
+                                Text(text = "Leona")
                             }
                         }
 
@@ -224,6 +353,11 @@ fun LearnScreen(
     }
 
     //Checks for showX
+    if (showBasics) {
+        ShowBasics(
+            back = { cardSelected = false; showGaren = false }
+        )
+    }
     if (showGaren) {
         ShowGaren(
             back = { cardSelected = false; showGaren = false }

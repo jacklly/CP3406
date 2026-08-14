@@ -106,7 +106,7 @@ fun ShowJinx(
                 }
             }
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                val champSplash = champName+"_0"
+                val champSplash = champName+"_60"
                 item {
                     AsyncImage(
                         model = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/$champSplash.jpg",
@@ -375,14 +375,18 @@ fun ShowJinx(
                             Row() {
                                 val eAbility = champName + "E"
                                 Column() {
-                                    Text(
-                                        text = "E Ability",
-                                        fontSize = 20.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        color = Color.Black,
-                                        modifier = Modifier.fillMaxWidth(),
-                                        textAlign = TextAlign.Center
-                                    )
+                                    Card(colors = CardDefaults.cardColors(containerColor = Color(0xFF7F00FF).copy(alpha = 0.7f)),
+                                        shape = RectangleShape)
+                                    {
+                                        Text(
+                                            text = "E Ability",
+                                            fontSize = 20.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = Color.Black,
+                                            modifier = Modifier.fillMaxWidth(),
+                                            textAlign = TextAlign.Center
+                                        )
+                                    }
                                     Row() {
                                         AsyncImage(
                                             model = "https://ddragon.leagueoflegends.com/cdn/16.15.1/img/spell/$eAbility.png",
@@ -393,17 +397,13 @@ fun ShowJinx(
                                                 .clip(RoundedCornerShape(10.dp))
                                         )
                                         Column() {
-                                            Card(colors = CardDefaults.cardColors(containerColor = Color(0xFF7F00FF).copy(alpha = 0.7f)),
-                                                shape = RectangleShape)
-                                            {
-                                                Text(
-                                                    text = "Flame Chompers!",
-                                                    fontSize = 20.sp,
-                                                    fontWeight = FontWeight.Bold,
-                                                    color = Color.Black,
-                                                    modifier = Modifier.padding(horizontal = 5.dp)
-                                                )
-                                            }
+                                            Text(
+                                                text = "Flame Chompers!",
+                                                fontSize = 20.sp,
+                                                fontWeight = FontWeight.Bold,
+                                                color = Color.Black,
+                                                modifier = Modifier.padding(horizontal = 5.dp)
+                                            )
                                             Text(
                                                 text = "Jinx tosses out 3 Chompers centered at " +
                                                         "the target location, landing after 0.4 " +
@@ -435,6 +435,9 @@ fun ShowJinx(
                             Row() {
                                 val eAbility = champName + "R"
                                 Column() {
+                                    Card(colors = CardDefaults.cardColors(containerColor = Color(0xFF7F00FF).copy(alpha = 0.7f)),
+                                        shape = RectangleShape)
+                                    {
                                     Text(
                                         text = "R Ability",
                                         fontSize = 20.sp,
@@ -443,6 +446,7 @@ fun ShowJinx(
                                         modifier = Modifier.fillMaxWidth(),
                                         textAlign = TextAlign.Center
                                     )
+                                        }
                                     Row() {
                                         AsyncImage(
                                             model = "https://ddragon.leagueoflegends.com/cdn/16.15.1/img/spell/$eAbility.png",
@@ -452,30 +456,27 @@ fun ShowJinx(
                                                 .padding(5.dp)
                                                 .clip(RoundedCornerShape(10.dp))
                                         )
-                                        Column() {
-                                            Card(colors = CardDefaults.cardColors(containerColor = Color(0xFF7F00FF).copy(alpha = 0.7f)),
-                                                shape = RectangleShape)
-                                            {
-                                                Text(
-                                                    text = "Super Mega Death Rocket!",
-                                                    fontSize = 20.sp,
-                                                    fontWeight = FontWeight.Bold,
-                                                    color = Color.Black,
-                                                    modifier = Modifier.padding(horizontal = 5.dp)
-                                                )
-                                            }
-                                            Text(
-                                                text = "Jinx fires a massive rocket in the target " +
-                                                        "direction, briefly granting sight of its " +
-                                                        "surroundings and exploding upon colliding " +
-                                                        "with an enemy champion. The explosion " +
-                                                        "deals physical damage to nearby enemies " +
-                                                        "and grants sight of the area for 2 seconds.",
-                                                fontSize = 15.sp,
-                                                color = Color.Black,
-                                                lineHeight = 15.sp,
-                                                modifier = Modifier.padding(5.dp)
-                                            )
+
+                                        Text(
+                                            text = "Super Mega Death Rocket!",
+                                            fontSize = 20.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = Color.Black,
+                                            modifier = Modifier.padding(horizontal = 5.dp)
+                                        )
+
+                                        Text(
+                                            text = "Jinx fires a massive rocket in the target " +
+                                                    "direction, briefly granting sight of its " +
+                                                    "surroundings and exploding upon colliding " +
+                                                    "with an enemy champion. The explosion " +
+                                                    "deals physical damage to nearby enemies " +
+                                                    "and grants sight of the area for 2 seconds.",
+                                            fontSize = 15.sp,
+                                            color = Color.Black,
+                                            lineHeight = 15.sp,
+                                            modifier = Modifier.padding(5.dp)
+                                        )
                                         }
                                     }
                                 }
@@ -487,4 +488,3 @@ fun ShowJinx(
             }
         }
     }
-}
