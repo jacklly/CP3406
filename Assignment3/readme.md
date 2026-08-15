@@ -16,9 +16,9 @@
 
 - Once running the app, you'll be prompted to enter a user in settings. Admittedly - entering nothing, or an invalid user will just crash the app - so feel free to use my user: Aniki#Aniki. Entering 'Aniki' into each textbox and hitting the go button will run the app as intended.
 
-#Features
+## Features
 
-##Homepage / Landing Screen
+## Homepage / Landing Screen
 - Once you have a user in, this screen displays some basic info on champions - the user's levels on each champion in descending order, and the champion's name with an icon next to it.
 
 - This is quite a simple screen and serves to simply be where you arrive when you open the app, so I thought best not to overdo it.
@@ -28,7 +28,7 @@
 
 - This information is the baseline to see how you did in a League game, hence my choice. Were I given more time, I would have made each clickable to bring up more in-depth metrics, but unfortunately, this would require even more scanning of the Riot-API docs.
 
-##Learn Page (Left Hand Side on the Nav Bar)
+## Learn Page (Left Hand Side on the Nav Bar)
 - This is the learning page - and gives some basic info on the game. This includes pop-up cards that give extra info on certain things, including the very basics of League, and a few simple champions to pick up if you're new.
 
 - Intended to be for someone with fresh eyes for the game, this page and it's pop up's are the bare minimum to understanding League, and miss or simply elaborate on other information that would otherwise be in the in-game tutorial - so it appears extremely barebones.
