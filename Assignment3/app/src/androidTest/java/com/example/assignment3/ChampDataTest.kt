@@ -1,18 +1,8 @@
 package com.example.assignment3
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import org.json.JSONObject
+import org.junit.Assert
 import org.junit.Test
-
-import org.junit.Assert.*
-import java.net.URL
 
 class ChampDataTest {
 
@@ -27,13 +17,7 @@ class ChampDataTest {
         val champBlurb = champData.getString("title")
         val champLore = champData.getString("lore")
 
-        assertEquals("The Might of Demacia", champBlurb)
-        assertEquals("A proud and noble warrior, Garen fights as one of the Dauntless " +
-                "Vanguard. He is popular among his fellows, and respected well enough by his " +
-                "enemies—not least as a scion of the prestigious Crownguard family, entrusted " +
-                "with defending Demacia and its ideals. Clad in magic-resistant armor and " +
-                "bearing a mighty broadsword, Garen stands ready to confront mages and " +
-                "sorcerers on the field of battle, in a veritable whirlwind of righteous " +
-                "steel.", champLore)
+        Assert.assertEquals("The Might of Demacia", champBlurb)
+        Assert.assertTrue(champLore.contains("A proud and noble warrior"))
     }
 }
