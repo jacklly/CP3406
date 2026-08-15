@@ -129,8 +129,6 @@ fun SettingsScreen(
         //get jsonobject with ranked info
         var rankedInfo: JSONObject? = JSONObject()
         var summonerInfo: JSONObject? = JSONObject()
-        var summonerLevel: Int = 0
-        var summonerIcon: Int = 0
 
         //ensure there's a puuid
         if (puuid != "") {
